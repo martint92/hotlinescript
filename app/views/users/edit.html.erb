@@ -1,0 +1,16 @@
+
+
+    <h1>Edit Info</h1>
+    <%= form_for(@user) do |f| %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, :class => "loginform" %>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, :class => "loginform"  %>
+        <%= f.label :email %>
+        <%= f.email_field :email, :class => "loginform"  %>
+        <%= f.label :password %>
+        <%= f.password_field :password, :class => "loginform"  %>
+        <%= f.select :role, ['default', 'editor', 'admin'] %>
+        <%= f.submit "Save Changes", :class => "button" %>
+    <% end %>
+ 

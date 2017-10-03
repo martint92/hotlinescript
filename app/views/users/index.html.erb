@@ -1,0 +1,21 @@
+<h1>List of All Users</h1>
+
+<table>
+    <tr class="user-list-table-row">
+        <th class="user-list-table">First Name</th>
+        <th class="user-list-table">Last Name</th>
+        <th class="user-list-table">Email</th>
+        <th class="user-list-table">Permissions</th>
+    </tr>
+    <% @users.each do |u| %>
+        <tr class="user-list-table-row">
+            <td class="user-list-table"><%= link_to u.first_name, u %></td>
+            <td class="user-list-table"><%= link_to u.last_name, u %></td>
+            <td class="user-list-table"><%= u.email %></td>
+            <td class="user-list-table"><%= u.role.capitalize %></td>
+            <td class="user-list-table"><%= link_to 'Edit', edit_user_path(u), :class => "button"%></td>
+            <td class="user-list-table"><%= link_to "Delete", u, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "button" %></td>
+        </tr>
+    <% end %>
+
+

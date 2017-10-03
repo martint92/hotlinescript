@@ -1,0 +1,36 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: hotline_development
+  host: localhost
+  username: hotline
+  password: password1
+
+
+test:
+  <<: *default
+  database: hotline_test
+  host: localhost
+  username: hotline
+  password: password1
+
+# On Heroku and other platform providers, you may have a full connection URL
+# available as an environment variable. For example:
+#
+#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
+#
+# You can use this database configuration with:
+#
+#   production:
+#     url: <%= ENV['DATABASE_URL'] %>
+#
+production:
+  <<: *default
+  database: hotline_production
+  username: hotline
+  password: <%= ENV['HOTLINE_DATABASE_PASSWORD'] %>

@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* Header and Nav Items */
+
+.logo {
+    float: left;
+    padding: 8px;
+    margin-left: 50px;
+}
+.nav-item {
+    padding: 8px;
+    text-decoration: none;
+    background-color: rgb(230, 71, 64);
+    color: rgb(255, 255, 255);
+    font-size: 32px;
+}
+.nav-item:hover {
+    background-color: rgb(200, 71, 64)
+}
+.login {
+    margin: 20px 8px;
+    float: right;
+}
+nav {
+    margin: 20px 8px;
+    float:left;
+}
+header {
+    background-color: rgb(230, 71, 64);
+    min-height: 80px;
+}
+
+/* Body and Main Items */
+body {
+    height: 100vh;
+}
+main {
+    margin: 0 5%;
+    background-color: rgb(240, 240, 240);
+    min-height: 100%;
+}
+
+/* Static Page Specific Elements */
+#maintenance-post {
+    margin-top: 100px;
+}
+#maintenance-post h1 {
+    text-align: center;
+    font-size: 40px;
+    color: rgb(60, 60, 60);
+}
+#maintenance-post p {
+    margin-top: 40px;
+    text-align: center;
+    color: rgb(60, 60, 60);
+}
+.does-not-exist {
+    border: 4px solid rgb(230, 71, 64);
+    margin: auto;
+    width: 800px;
+    height: 400px;
+    text-align: center;
+}
+.spacing {
+    padding: 50px;
+}
+.does-not-exist h1 {
+    margin: 60px 0;
+    font-size: 64px;
+    line-height: 20px;
+}
+/* User Model Specific Elements */
+.signup-box {
+    border: 2px solid black;
+    float: left;
+    margin: 20px;
+    padding: 12px;
+    background-color: rgb(230, 71, 64);
+}
+.signup-box-element {
+    display: block;
+    line-height: 36px;
+    font-size: 30px;
+    text-align: center;
+    margin: 8px 0;
+    border-radius: 15px;
+    border-style: none;
+}
+.signup-box h1 {
+    margin: 18px 0;
+    text-align: center;
+}
+.btn-submit {
+    background-color: rgb(230, 71, 64);
+    color: rgb(255, 255, 255);
+    padding: 12px;
+    font-size: 30px;
+    border-style: none;
+    margin: 0 20px;
+}
+.btn-submit:hover {
+    background-color: rgb(200, 71, 64);
+}
+
+/* Harvey FAQ Eleents */
+.qaa-box {
+    margin: 12px 10px;
+}
+.qaa-box h4 {
+    background-color: rgb(200, 200, 200);
+    border: 2px solid rgb(150, 150, 150);
+    margin-top: 12px;
+    padding: 4px 10px;
+}
+.qaa-box p {
+    padding: 4px 10px;
+    border: 2px solid rgb(200, 200, 200);
+}

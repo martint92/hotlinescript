@@ -1,0 +1,23 @@
+<h1>Your Profile</h1>
+
+<table>
+    <tr>
+        <td>First Name: </td>
+        <td> <%= @user.first_name %></td>
+    </tr>
+    <tr>
+        <td>Last Name: </td>
+        <td><%= @user.last_name %></td>
+    </tr>
+    <tr>
+        <td>Email: </td>
+        <td><%= @user.email %></td>
+    </tr>
+    <tr>
+        <td>Permissions: </td>
+        <td><%= @user.role.capitalize %></td>
+    </tr>
+</table>
+    <%= link_to "Edit Your Profile", edit_user_path(@user) %>
+    <%= link_to "Delete Your Profile", @user, method: :delete, data: { confirm: "Are you sure? This cannot be undone." } %>
+    <%= link_to 'See All Users', '/user/list' if current_user && current_user.admin?%>

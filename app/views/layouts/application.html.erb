@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hotline</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <header>
+      <%= image_tag "logo_hilsc.png", :class => "logo" %>
+      <nav>
+        <%= link_to 'Home', '/home', :class => "nav-item" %>
+        <%= link_to 'Script', '/script', :class => "nav-item" %>
+        <%= link_to 'Harvey FAQ', '/harveyfaq', :class => "nav-item" %>
+        <%= link_to 'Contact', '/contact', :class => "nav-item" %>
+      </nav>
+      <div class="login">
+        <% if current_user %>
+          <%= link_to current_user.first_name, current_user, :class => "nav-item" %>
+          <%= link_to "Log out", '/logout', method: "delete", :class => "nav-item" %>
+        <% else %>
+          <%= link_to 'Login', '/login', :class => "nav-item"%>
+        <% end %>
+      </div>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+    </footer>
+  </body>
+</html>
