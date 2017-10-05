@@ -6,7 +6,7 @@ class StaticController < ApplicationController
   def Maintenance
   end
 
-  def PermissionError
+  def permissionerror
   end
 
   def Contact

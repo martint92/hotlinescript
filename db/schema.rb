@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170930045540) do
+ActiveRecord::Schema.define(version: 20171005000058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "faqposts", force: :cascade do |t|
+    t.string "faqpost_title"
+    t.text "faqpost_body"
+    t.string "faqpost_author"
+    t.string "faqpost_editor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"

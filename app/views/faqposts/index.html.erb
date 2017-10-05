@@ -1,0 +1,25 @@
+<div class="spacing">
+</div>
+<article>
+    <div class="article-title">
+        <h1> FAQ for Immigrant Survivors of Harvey</h1>
+        <p class="subtitle">This guide is not intended for the public, but to be a resource for organizations who are trying to answer questions from their clients as well as people answering questions on the Immigrant Rights Hotline.</p>
+    </div>
+    <br><br>
+    <p>For volunteers: 
+        <br>
+        Thank you so much much volunteering to answer questions from Harvey survivors. This guide has some frequently asked questions. Please feel free to add comments if you hear additional questions or have suggestions to add to the answer sections. 
+        <br><br>
+        If you don’t know an answer: “I’m a volunteer and while I don’t know, we are updating our information regularly, so please call back/come back later” or conduct a Google search to help find the right info. 
+        <br><br>
+        We want the immigrant community to know that they have power to make change.  If you get the impression that an individual wants to get more involved, encourage them to organize with other immigrants. If they fill out <%= link_to "this link,", 'http://bit.ly/HouHotlineQ' %> they’ll be contacted by an immigrant rights organizer.
+    </p>
+</article>
+<div class="spacing">
+</div>
+<% @faqposts.each do |post| %>
+    <div class="qaa-box">
+        <h4 class="qaa-title"><%= post.faqpost_title %></h4>
+        <p class="answers-box"><%= post.faqpost_body.html_safe %></p>
+    </div>
+<% end %>

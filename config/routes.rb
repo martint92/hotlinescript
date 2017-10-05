@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :faqposts
 
   root 'static#Maintenance'
 
@@ -11,9 +12,10 @@ Rails.application.routes.draw do
   get '/maintenance' => 'static#Maintenance'
   get '/permissionError' => 'static#Permissionerror'
   get '/contact' => 'static#Contact'
-  get '/harveyfaq' => 'static#HarveyFaq'
+  get '/harveyfaqold' => 'static#HarveyFaq'
   get '/doesnotexist' => 'static#doesnotexist'
   get '/script/' => 'static#doesnotexist'
+  get '/error' => 'static#permissionerror'
 
   get '/signup' => 'users#new'
   post '/user' => 'users#create'
@@ -23,6 +25,10 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
+
+  get '/harveyfaq' => 'faqposts#index'
+  get '/harveyfaq/new' => 'faqposts#new'
+  get '/harveyfaq/edit' => 'faqposts#edit'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
