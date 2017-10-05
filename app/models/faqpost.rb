@@ -1,0 +1,2 @@
+class Faqpost < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+module FaqpostsHelper
+end
