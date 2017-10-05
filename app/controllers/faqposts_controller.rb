@@ -16,9 +16,7 @@ class FaqpostsController < ApplicationController
         @hyperlink = "<a href=\"http://website.com\"> Texted to be linked </a> "
     end
 
-    def show
-        @faqpost = Faqpost.find(params[:id])
-    end
+
 
     def create
         @faqpost = Faqpost.new(faqpost_params)
@@ -26,12 +24,15 @@ class FaqpostsController < ApplicationController
         @faqpost.faqpost_editor ||= current_user
         @faqpost.faqpost_body = @faqpost.faqpost_body.html_safe
         if @faqpost.save
-            redirect_to '/harveyfaq'
+            redirect_to '/faqposts'
         else
-            render 'new'
+            redirect_to 'index'
         end
     end
 
+    def show
+        @faqpost = Faqpost.find(params[:id])
+    end
 
     def edit 
         @faqpost = Faqpost.find(params[:id])
@@ -41,15 +42,15 @@ class FaqpostsController < ApplicationController
         @faqpost = Faqpost.find(params[:id])
         @faqpost_editor = current_user
         if @faqpost.update_attributes(faqpost_params)
-            render 'show'
+            redirect_to 'index'
         else
-            render 'edit'
+            redirect_to 'index'
         end
     end
 
     def destroy 
         Faqpost.find(params[:id]).destroy
-        redirect_to '/harveyfaq'
+        redirect_to '/faqposts'
     end
 
     private

@@ -19,7 +19,7 @@
 </div>
 <% @faqposts.each do |post| %>
     <div class="qaa-box">
-        <h4 class="qaa-title"><%= post.faqpost_title %></h4>
+        <h4 class="qaa-title"><%= post.faqpost_title %><%= link_to '[edit]', edit_faqpost_path(post), :class => "edit-button" if current_user && current_user.editor? %></h4>
         <p class="answers-box"><%= post.faqpost_body.html_safe %></p>
     </div>
 <% end %>

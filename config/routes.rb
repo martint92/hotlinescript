@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/harveyfaqold' => 'static#HarveyFaq'
   get '/doesnotexist' => 'static#doesnotexist'
   get '/script/' => 'static#doesnotexist'
-  get '/error' => 'static#permissionerror'
+  get '/error' => 'static#PermissionError'
 
   get '/signup' => 'users#new'
   post '/user' => 'users#create'
@@ -26,9 +26,11 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  get '/harveyfaq' => 'faqposts#index'
-  get '/harveyfaq/new' => 'faqposts#new'
-  get '/harveyfaq/edit' => 'faqposts#edit'
+  get '/faqposts' => 'faqposts#index'
+  get '/faqposts/new' => 'faqposts#new'
+  post '/faqposts/' => 'faqposts#create'
+  get '/faqposts/:id/edit' => 'faqposts#edit', as: @faqpost
+  post '/faqposts' => 'faqposts#update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
