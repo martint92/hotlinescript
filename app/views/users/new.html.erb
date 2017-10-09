@@ -1,11 +1,11 @@
 
-<div class="signup-box">
-  <h1>Sign up</h1>
-  <%= form_for(@user) do |f| %>
-      <%= f.text_field :first_name, :placeholder => "First Name", :class => "signup-box-element" %> 
-      <%= f.text_field :last_name, :placeholder => "Last Name", :class => "signup-box-element" %> 
-      <%= f.email_field :email, :placeholder => "Email", :class => "signup-box-element" %>
-      <%= f.password_field :password, :placeholder => "Password", :class => "signup-box-element" %>
-      <%= f.submit "Create An Account", class: "btn-submit" %>
-  <% end %>
+<br>
+<%= render "form" %>
+<div class="permissions">
+  <h1>
+    Notice
+  </h1>
+  <p>
+    You must have permission to create a new account. If you are not sure if you can create an account or not, please contact an administarator. Enter your varification in the form to your left along with your signup information. 
+  </p>    
 </div>
