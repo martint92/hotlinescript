@@ -1,16 +1,18 @@
 
-
+<br>
     <h1>Edit Info</h1>
+<div class="signup-box">
     <%= form_for(@user) do |f| %>
         <%= f.label :first_name %>
-        <%= f.text_field :first_name, :class => "loginform" %>
+        <%= f.text_field :first_name, :class => "signup-box-element" %>
         <%= f.label :last_name %>
-        <%= f.text_field :last_name, :class => "loginform"  %>
+        <%= f.text_field :last_name, :class => "signup-box-element"  %>
         <%= f.label :email %>
-        <%= f.email_field :email, :class => "loginform"  %>
+        <%= f.email_field :email, :class => "signup-box-element"  %>
         <%= f.label :password %>
-        <%= f.password_field :password, :class => "loginform"  %>
+        <%= f.password_field :password, :class => "signup-box-element"  %>
         <%= f.select :role, ['default', 'editor', 'admin'] %>
-        <%= f.submit "Save Changes", :class => "button" %>
+        <%= f.submit "Save Changes", :class => "btn-submit" %>
     <% end %>
+</div>
  
