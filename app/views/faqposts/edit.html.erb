@@ -1,7 +1,7 @@
 <h1>Edit Post</h1>
 <%= form_for(@faqpost) do |f| %>
 <%= f.text_field :faqpost_title %>
-<%= f.text_area :faqpost_body %>
+<%= f.cktext_area :faqpost_body %>
 <%= f.submit 'Save Changes' %>
 <% end %>
 

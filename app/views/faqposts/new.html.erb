@@ -1,7 +1,7 @@
 <h1>New Section</h1>
 <%= form_for(@faqpost) do |f| %>
     <%= f.text_field :faqpost_title, :placeholder => "Title" %>
-    <%= f.text_area :faqpost_body, :placeholder => @helpfulstring %>
+    <%= f.cktext_area :faqpost_body, :placeholder => @helpfulstring %>
     <%= f.submit 'Submit' %>
 <% end %>
 

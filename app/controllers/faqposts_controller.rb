@@ -42,9 +42,9 @@ class FaqpostsController < ApplicationController
         @faqpost = Faqpost.find(params[:id])
         @faqpost_editor = current_user
         if @faqpost.update_attributes(faqpost_params)
-            redirect_to 'index'
+            redirect_to '/faqposts'
         else
-            redirect_to 'index'
+            redirect_to '/faqposts'
         end
     end
 

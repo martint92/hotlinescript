@@ -17,9 +17,17 @@
 </article>
 <div class="spacing">
 </div>
+<%= link_to 'New Post', new_faqpost_path if current_user && current_user.editor? %>
 <% @faqposts.each do |post| %>
     <div class="qaa-box">
-        <h4 class="qaa-title"><%= post.faqpost_title %><%= link_to '[edit]', edit_faqpost_path(post), :class => "edit-button" if current_user && current_user.editor? %></h4>
-        <p class="answers-box"><%= post.faqpost_body.html_safe %></p>
+        <h4 class="qaa-title">
+            <%= image_tag 'plus.png', :size => '14x14', :class => "plus-img" %> 
+            <%= image_tag 'minus.png', :size => '14x14', :class => "minus-img" %>
+            <%= post.faqpost_title %>
+            <%= link_to '[edit]', edit_faqpost_path(post), :class => "edit-button" if current_user && current_user.editor? %>
+        </h4>
+        <div class="answers-box">
+            <%= post.faqpost_body.html_safe %>
+        </div>
     </div>
 <% end %>
