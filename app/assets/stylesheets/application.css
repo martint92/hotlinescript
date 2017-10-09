@@ -43,7 +43,6 @@ main {
     background-color: rgb(240, 240, 240);
     min-height: 100%;
 }
-
 /* Static Page Specific Elements */
 #maintenance-post {
     margin-top: 100px;
@@ -75,11 +74,10 @@ main {
 }
 /* User Model Specific Elements */
 .signup-box {
-    border: 2px solid black;
+    border: 2px solid rgb(200, 71, 64);
     float: left;
     margin: 20px;
-    padding: 12px;
-    background-color: rgb(230, 71, 64);
+    padding: 36px;
 }
 .signup-box-element {
     display: block;
@@ -93,32 +91,88 @@ main {
 .signup-box h1 {
     margin: 18px 0;
     text-align: center;
+    font-size: 48px;
 }
 .btn-submit {
     background-color: rgb(230, 71, 64);
     color: rgb(255, 255, 255);
     padding: 12px;
     font-size: 30px;
+    min-width: 60px;
     border-style: none;
-    margin: 0 20px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
 }
 .btn-submit:hover {
     background-color: rgb(200, 71, 64);
 }
+.linkage:visited {
+    text-decoration: none;
+    color: blue;
+}
+.profile-td {
+    padding: 4px;
+}
+.profile-title {
+    font-size: 48px;
+    margin: 24px 12px;
+}
+.link-btns {
+    margin: 12px 4px;
+}
+.btns {
+    padding: 8px;
+    background-color: rgb(230, 71, 64);
+    color: white;
+    text-decoration: none;
+}
+.btns:visited {
+    color: white;
+}
+.btns:hover {
+    background-color: (rgb(200, 71, 64))
+}
+.user-list-table {
+    padding: 4px;
+}
+
+.user-list-title {
+    font-size: 48px;
+}
 
 /* Harvey FAQ Eleents */
+#faq-info {
+    margin: 36px 10px;
+}
+.article-title h1 {
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+.subtitle {
+    text-align: center;
+    font-style: italic;
+}
 .qaa-box {
     margin: 12px 10px;
 }
-.qaa-box h4 {
+.qaa-title {
     background-color: rgb(200, 200, 200);
     border: 2px solid rgb(150, 150, 150);
     margin-top: 12px;
     padding: 4px 10px;
 }
+.qaa-title:hover {
+    background-color: rgb(175, 175, 175);
+}
 .qaa-box p {
     padding: 4px 10px;
     border: 2px solid rgb(200, 200, 200);
+}
+.answers-box a:visited {
+    text-decoration: none;
+    color: blue;
 }
 .html-key {
     display: none;

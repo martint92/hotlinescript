@@ -1,6 +1,5 @@
-<div class="spacing">
-</div>
-<article>
+<div><br></div>
+<article id="faq-info">
     <div class="article-title">
         <h1> FAQ for Immigrant Survivors of Harvey</h1>
         <p class="subtitle">This guide is not intended for the public, but to be a resource for organizations who are trying to answer questions from their clients as well as people answering questions on the Immigrant Rights Hotline.</p>
@@ -15,8 +14,6 @@
         We want the immigrant community to know that they have power to make change.  If you get the impression that an individual wants to get more involved, encourage them to organize with other immigrants. If they fill out <%= link_to "this link,", 'http://bit.ly/HouHotlineQ' %> they’ll be contacted by an immigrant rights organizer.
     </p>
 </article>
-<div class="spacing">
-</div>
 <%= link_to 'New Post', new_faqpost_path if current_user && current_user.editor? %>
 <% @faqposts.each do |post| %>
     <div class="qaa-box">

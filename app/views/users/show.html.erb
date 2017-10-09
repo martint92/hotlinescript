@@ -1,23 +1,26 @@
-<h1>Your Profile</h1>
+<br>
+<h1 class="profile-title">Profile</h1>
 
-<table>
+<table class="profile-table">
     <tr>
-        <td>First Name: </td>
-        <td> <%= @user.first_name %></td>
+        <td class="profile-td">First Name: </td>
+        <td class="profile-td"> <%= @user.first_name %></td>
     </tr>
     <tr>
-        <td>Last Name: </td>
-        <td><%= @user.last_name %></td>
+        <td class="profile-td">Last Name: </td>
+        <td class="profile-td"><%= @user.last_name %></td>
     </tr>
     <tr>
-        <td>Email: </td>
-        <td><%= @user.email %></td>
+        <td class="profile-td">Email: </td>
+        <td class="profile-td"><%= @user.email %></td>
     </tr>
     <tr>
-        <td>Permissions: </td>
-        <td><%= @user.role.capitalize %></td>
+        <td class="profile-td">Permissions: </td>
+        <td class="profile-td"><%= @user.role.capitalize %></td>
     </tr>
 </table>
-    <%= link_to "Edit Your Profile", edit_user_path(@user) %>
-    <%= link_to "Delete Your Profile", @user, method: :delete, data: { confirm: "Are you sure? This cannot be undone." } %>
-    <%= link_to 'See All Users', '/user/list' if current_user && current_user.admin?%>
+<div class="link-btns">
+    <%= link_to "Edit Your Profile", edit_user_path(@user), :class => "btns" %>
+    <%= link_to "Delete Your Profile", @user, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "btns" %>
+    <%= link_to 'See All Users', '/user/list', :class => "btns" if current_user && current_user.admin?%>
+</div>
