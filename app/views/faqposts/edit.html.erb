@@ -1,8 +1,8 @@
 <h1>Edit Post</h1>
 <%= form_for(@faqpost) do |f| %>
-<%= f.text_field :faqpost_title %>
-<%= f.cktext_area :faqpost_body %>
-<%= f.submit 'Save Changes' %>
+<%= f.text_field :faqpost_title, :class => "post-title", :placeholder => "Title" %>
+<%= f.cktext_area :faqpost_body, :class => "post-body" %>
+<%= f.submit 'Save Changes', :class => "btn-submit" %>
 <% end %>
 
 <div class="html-key">

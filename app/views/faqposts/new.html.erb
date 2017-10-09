@@ -1,8 +1,9 @@
+<br>
 <h1>New Section</h1>
 <%= form_for(@faqpost) do |f| %>
-    <%= f.text_field :faqpost_title, :placeholder => "Title" %>
-    <%= f.cktext_area :faqpost_body, :placeholder => @helpfulstring %>
-    <%= f.submit 'Submit' %>
+    <%= f.text_field :faqpost_title, :placeholder => "Title", :class => "post-title" %>
+    <%= f.cktext_area :faqpost_body, :placeholder => @helpfulstring, :class => "post-body" %>
+    <%= f.submit 'Save', :class => "btn-submit" %>
 <% end %>
 
 <div class="html-key">
