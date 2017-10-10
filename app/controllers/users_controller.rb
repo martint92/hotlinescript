@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+    before_action :require_editor, only: [:new]
+
     def index
         @users = User.order(role: :asc)
     end
@@ -15,6 +17,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        @user.password ||= 'password1'
         @user.role ||= 'volunteer'
         if @user.save
             session[:user_id] = @user.id 
@@ -33,7 +36,7 @@ class UsersController < ApplicationController
         @user.role ||= 'volunteer'
         if current_user && current_user.admin?
             @user.update_attributes(user_params_admin)
-            reder 'show'
+            render 'show'
         elsif @user.update_attributes(user_params)
             render 'show'
         else
@@ -44,14 +47,6 @@ class UsersController < ApplicationController
     def destroy 
         User.find(params[:id]).destroy
         flash[:success] = "User Deleated"
-=begin this is code I used on a previous build, doubt it will be needed here
-        if :id != :user_id
-            redirect_to '/user/list'
-        else
-            session[:user_id] = nil
-            redirect_to '/'
-        end
-=end
         render 'home'
     end
 

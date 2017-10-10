@@ -1,11 +1,21 @@
 
 <br>
-<%= render "form" %>
+<div class="signup-box">
+    <h1>Send an Invite</h1>
+    <%= form_for(@user) do |f| %>
+        <%= f.text_field :first_name, :placeholder => "First Name", :class => "signup-box-element" %> 
+        <%= f.text_field :last_name, :placeholder => "Last Name", :class => "signup-box-element" %> 
+        <%= f.email_field :email, :placeholder => "Email", :class => "signup-box-element" %>
+        <%= f.submit "Send Invite", class: "btn-submit" %>
+    <% end %>
+</div>
 <div class="permissions">
   <h1>
     Notice
   </h1>
   <p>
-    You must have permission to create a new account. If you are not sure if you can create an account or not, please contact an administarator. Enter your varification in the form to your left along with your signup information. 
+      Invite someone to join by submitting their name and email address. 
+      This will send them an email inviting them to create their own password. 
+      To assign them user permission, please contact an administrator.
   </p>    
 </div>

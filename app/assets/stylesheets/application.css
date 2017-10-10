@@ -167,6 +167,17 @@ main {
 .alert alert-failure {
     color: red;
 }
+.select-btn {
+    padding: 5px;
+    font-size: 30px;
+    min-width: 60px;
+    line-height: 36px;
+    border-radius: 15px;
+    display: block;
+    margin: 8px 0;
+
+    /*I can't get anything to work here */
+}
 
 
 /* Harvey FAQ Eleents */
@@ -225,6 +236,5 @@ main {
     color: blue;
 }
 .edit-button a:visited {
-    text-decoration: none;
     color: blue;
 }

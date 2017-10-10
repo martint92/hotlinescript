@@ -11,7 +11,7 @@
         <%= f.email_field :email, :class => "signup-box-element"  %>
         <%= f.label :password %>
         <%= f.password_field :password, :class => "signup-box-element"  %>
-        <%= f.select :role, ['default', 'editor', 'admin'] %>
+        <%= f.select :role, ['volunteer', 'editor', 'admin'], {}, { :class => "select-btn" } %>
         <%= f.submit "Save Changes", :class => "btn-submit" %>
     <% end %>
 </div>

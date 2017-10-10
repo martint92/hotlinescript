@@ -23,4 +23,5 @@
     <%= link_to "Edit Your Profile", edit_user_path(@user), :class => "btns" %>
     <%= link_to "Delete Your Profile", @user, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "btns" %>
     <%= link_to 'See All Users', '/user/list', :class => "btns" if current_user && current_user.admin?%>
+    <%= link_to 'Invite New User', '/signup', :class => "btns" if current_user && current_user.editor? %>
 </div>

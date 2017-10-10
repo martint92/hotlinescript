@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :faqposts
+  resources :acount_activations, only: [:edit]
 
   root 'static#Maintenance'
 
@@ -32,5 +33,4 @@ Rails.application.routes.draw do
   get '/faqposts/:id/edit' => 'faqposts#edit', as: @faqpost
   post '/faqposts' => 'faqposts#update'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

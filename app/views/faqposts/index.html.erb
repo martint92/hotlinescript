@@ -22,6 +22,9 @@
             <%= image_tag 'minus.png', :size => '14x14', :class => "minus-img" %>
             <%= post.faqpost_title %>
             <%= link_to '[edit]', edit_faqpost_path(post), :class => "edit-button" if current_user && current_user.editor? %>
+            <%= link_to '[delete]', faqpost_path(post), method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-button" if current_user && current_user.editor? %>
+            <% person = post.faqpost_editor %>
+            <%= "Last edit on #{post.updated_at} by #{person}" if current_user && current_user.editor? %>
         </h4>
         <div class="answers-box">
             <%= post.faqpost_body.html_safe %>
