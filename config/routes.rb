@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :faqposts
   resources :acount_activations, only: [:edit]
 
-  root 'static#Maintenance'
+  root 'faqpost#index'
 
   get '/home' => 'static#Home'
   get '/maintenance' => 'static#Maintenance'
