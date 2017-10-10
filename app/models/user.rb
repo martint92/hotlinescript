@@ -23,6 +23,4 @@ class User < ApplicationRecord
     def :create_activation_digest
         self.activation_token = User.new_token
     end 
-    
 
-end
