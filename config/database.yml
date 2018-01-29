@@ -16,7 +16,7 @@ test:
   <<: *default
   database: hotline_test
   host: localhost
-  username: hotline
+  username: hotline_superuser
   password: password1
 
 # On Heroku and other platform providers, you may have a full connection URL
