@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :require_editor, only: [:new]
+    #before_action :require_editor, only: [:new]
 
     def index
         @users = User.order(role: :asc)

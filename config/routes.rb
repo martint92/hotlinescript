@@ -1,23 +1,28 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
 
-  resources :users
-  resources :sessions
-  resources :faqposts
+  resources :users, :sessions, :faqposts, :sections
   resources :acount_activations, only: [:edit]
 
-  root 'faqposts#index'
+  root 'static#home'
 
-  get '/home' => 'static#Home'
-  get '/maintenance' => 'static#Maintenance'
-  get '/permissionError' => 'static#Permissionerror'
-  get '/contact' => 'static#Contact'
-  get '/harveyfaqold' => 'static#HarveyFaq'
+  #SECTIONS PAGES
+  get '/section/' => "sections#index", as: "sections/index"
+  get 'sections/new'
+  get 'sections/index'
+  get 'sections/:id/edit' => 'sections#edit', as: @section
+  get '/fetch_sections' => 'sections#from_sections', as: 'fetch_sections'
+  get '/link_sections' => 'sections#from_link', as: 'fetch_sections_by_link'
+
+  #STATIC PAGES
+  get '/maintenance' => 'static#maintenance'
+  get '/permissionError' => 'static#permission_error'
+  get '/contact' => 'static#contact'
+  get '/harveyfaqold' => 'static#harvey_faq'
   get '/doesnotexist' => 'static#doesnotexist'
-  get '/script/' => 'static#doesnotexist'
-  get '/error' => 'static#PermissionError'
+  get '/error' => 'static#permission_error'
 
+  #USER PAGES
   get '/signup' => 'users#new'
   post '/user' => 'users#create'
   get '/user/list' => 'users#index'
@@ -27,6 +32,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
+  #HARVEY FAQ  // DEPRICIATED // CODE USEFUL FOR REFERENCE
   get '/faqposts' => 'faqposts#index'
   get '/faqposts/new' => 'faqposts#new'
   post '/faqposts/' => 'faqposts#create'

@@ -1,0 +1,10 @@
+<div class="nested-fields">
+    <div class="field">
+        <%= f.select :option do %>
+            <% @sections.each do |section| %>
+                <%= content_tag(:option, section.title) %>
+            <% end %>
+        <% end %> 
+    </div>
+    <%= link_to_remove_association "Remove Link", f %>
+</div>

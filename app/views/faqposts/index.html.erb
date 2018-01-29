@@ -14,20 +14,9 @@
         We want the immigrant community to know that they have power to make change.  If you get the impression that an individual wants to get more involved, encourage them to organize with other immigrants. If they fill out <%= link_to "this link,", 'http://bit.ly/HouHotlineQ' %> they’ll be contacted by an immigrant rights organizer.
     </p>
 </article>
-<%= link_to 'New Post', new_faqpost_path, :class => "btns" if current_user && current_user.editor? %>
-<% @faqposts.each do |post| %>
-    <div class="qaa-box">
-        <h4 class="qaa-title">
-            <%= image_tag 'plus.png', :size => '14x14', :class => "plus-img" %> 
-            <%= image_tag 'minus.png', :size => '14x14', :class => "minus-img" %>
-            <%= post.faqpost_title %>
-            <%= link_to '[edit]', edit_faqpost_path(post), :class => "edit-button" if current_user && current_user.editor? %>
-            <%= link_to '[delete]', faqpost_path(post), method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-button" if current_user && current_user.editor? %>
-            <% person = post.faqpost_editor %>
-            <%= "Last edit on #{post.updated_at} by #{person}" if current_user && current_user.editor? %>
-        </h4>
-        <div class="answers-box">
-            <%= post.faqpost_body.html_safe %>
-        </div>
-    </div>
-<% end %>
+<div id="faqposts-form" style="display:none;"></div>
+<%= link_to 'New Post', new_faqpost_path, remote: true, :class => "btns" if current_user && current_user.editor? %>
+
+<div id="faqposts">
+   <%= render 'faqposts' %>
+</div>

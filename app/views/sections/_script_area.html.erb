@@ -1,0 +1,25 @@
+<%= link_to '[delete]', faqpost_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-button" if current_user && current_user.editor? %>
+<%= link_to '[edit]', edit_section_path(section), remote: true, :class => "edit-button" if current_user && current_user.editor? %>
+<h1><%= section.title %></h1>
+<p><%= section.body.html_safe %></p>
+<% if section.sub_sections %>
+    <% section.sub_sections.each do |ss| %>
+        <div class="qaa-box">
+            <h4 class="qaa-title">
+                <%= image_tag 'plus.png', :size => '14x14', :class => "plus-img" %> 
+                <%= image_tag 'minus.png', :size => '14x14', :class => "minus-img" %>
+                <%= ss.title %>
+            </h4>
+            <div class="answers-box">
+                <%= ss.body.html_safe %>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+<% if section.links %>
+    <% section.links.each do |link| %>
+        <div class="section-links">
+                <%= link_to link.option, fetch_sections_path(:section_title => link.option), :remote => true %>
+        </div>
+    <% end %>
+<% end %> 

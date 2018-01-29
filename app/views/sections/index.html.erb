@@ -1,0 +1,9 @@
+<h1>Sections#index</h1>
+<br />
+<%= link_to 'New Section', new_section_path, :remote => true %>
+<div class="grid">
+    <%= render 'sidebar_menu' %>
+    <div id="script-area">
+        <%= render partial: "script_area", locals: { section: @selected } %>
+    </div>
+</div>

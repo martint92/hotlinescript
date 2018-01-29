@@ -8,13 +8,12 @@
   </head>
 
   <body>
-
+    <%= flash[:notice] %>
     <header>
       <%= image_tag "logo_hilsc.png", :class => "logo" %>
       <nav>
-        <%= link_to 'Home', '/home', :class => "nav-item" %>
-        <%= link_to 'Script', '/script', :class => "nav-item" %>
-        <%= link_to 'Harvey FAQ', '/faqposts', :class => "nav-item" %>
+        <%= link_to 'Home', '/', :class => "nav-item" %>
+        <%= link_to 'Script', '/sections', :class => "nav-item" %>
         <%= link_to 'Contact', '/contact', :class => "nav-item" %>
       </nav>
       <div class="login">

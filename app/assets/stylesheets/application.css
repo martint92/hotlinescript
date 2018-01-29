@@ -72,6 +72,32 @@ main {
     font-size: 64px;
     line-height: 20px;
 }
+/* Sections Model and Controller Elements */
+.grid {
+    border: solid black 1px;
+    min-width: 90%;
+    height: 90%;
+    margin: 6px;
+    display: table;
+}
+#sidebar-menu {
+    width: 20%;
+    display: table-cell;
+    height: 100%;
+}
+#script-area {
+    padding: 12px;
+    display: table-cell;
+    border-left: 1px solid black;
+}
+#script-area .edit-button {
+    float: right;
+    margin: 0 4px;
+}
+li {
+    margin: 0 0 0 20px;
+}
+
 /* User Model Specific Elements */
 .signup-box {
     border: 2px solid rgb(200, 71, 64);

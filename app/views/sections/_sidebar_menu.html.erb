@@ -1,0 +1,10 @@
+<div id="sidebar-menu">
+    <h5>Navigation Menu by Topic</h5>
+    <ul>
+        <% Section.all.each do |section| %>
+            <li>
+                <%= link_to section.title, fetch_sections_path(:section_id => section.id), :remote => true %>
+            </li>        
+        <% end %>
+    </ul>
+</div>

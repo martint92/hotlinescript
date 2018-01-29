@@ -1,0 +1,21 @@
+<div class="section-form">
+    <%= form_for @section do |f| %>
+        <div class="field">
+            <p>Title</p>
+            <%= f.text_field :title %>
+            <p>Body</p>
+            <%= f.cktext_area :body %>
+        </div>
+        <div id="sub-sections">
+            <div class="add-associations">
+                <%= link_to_add_association 'Add Sub-Section', f, :sub_sections, partial: 'sub_section_fields' %>
+            </div>
+        </div>
+        <div id="links">
+            <div class="add-associations">
+                <%= link_to_add_association 'Add Links to other sections', f, :links %>
+            </div>
+        </div>
+        <%= f.submit "Submit", :class => "btn-submit" %>
+    <% end %>
+</div>

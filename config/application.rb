@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module Hotline
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    Figaro.load 
     config.load_defaults 5.1
     config.assets.precompile += Ckeditor.assets
     config.assets.precompile += %w( ckeditor/* )

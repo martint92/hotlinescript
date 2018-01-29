@@ -1,18 +1,18 @@
 class StaticController < ApplicationController
   
-  def Home
+  def home
   end
 
-  def Maintenance
+  def maintenance
   end
 
-  def PermissionError
+  def permission_error
   end
 
-  def Contact
+  def contact
   end
 
-  def HarveyFaq
+  def harvey_faq
   end
   
   def doesnotexist

@@ -1,0 +1,5 @@
+<%= form_for(@faqpost) do |f| %>
+    <%= f.text_field :faqpost_title, :placeholder => "Title", :class => "post-title" %>
+    <%= f.cktext_area :faqpost_body, :placeholder => "The body of your post should go here. You may use basic HTML to markup your post. Use the key to the right for help", :class => "post-body" %>
+    <%= f.submit 'Save', :class => "btn-submit" %>
+<% end %>
