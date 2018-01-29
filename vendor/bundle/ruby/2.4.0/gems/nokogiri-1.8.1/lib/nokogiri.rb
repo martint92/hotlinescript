@@ -2,6 +2,7 @@
 # Modify the PATH on windows so that the external DLLs will get loaded.
 
 require 'rbconfig'
+require 'rubygems'
 
 if defined?(RUBY_ENGINE) && RUBY_ENGINE == "jruby"
   # The line below caused a problem on non-GAE rack environment.
