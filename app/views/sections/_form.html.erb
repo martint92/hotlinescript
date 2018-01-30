@@ -3,7 +3,6 @@
             <div class="field">
                 <p>Title</p>
                 <%= f.text_field :title %>
-                <p>Body</p>
                 <%= f.cktext_area :body %>
             </div>
             <% if @section.sub_sections.any? %>

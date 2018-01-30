@@ -1,9 +1,9 @@
 <div id="sidebar-menu">
-    <h5>Navigation Menu by Topic</h5>
+    <h4>Navigation Menu</h4>
     <ul>
-        <% Section.all.each do |section| %>
+        <% Section.order(:id).each do |section| %>
             <li>
-                <%= link_to section.title, fetch_sections_path(:section_id => section.id), :remote => true %>
+                <%= link_to section.title, fetch_sections_path(:section_id => section.id), :remote => true, :class => "sidebar-links" %>
             </li>        
         <% end %>
     </ul>
