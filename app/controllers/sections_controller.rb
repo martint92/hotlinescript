@@ -1,4 +1,8 @@
 class SectionsController < ApplicationController
+  
+  before_action :require_editor, only: [:new, :edit]
+  before_action :require_user
+
   def new
     @sections = Section.all 
     @section = Section.new 
@@ -6,6 +10,7 @@ class SectionsController < ApplicationController
     @section.links.build 
     respond_to do |format|
       format.js 
+      format.html
     end
   end
 

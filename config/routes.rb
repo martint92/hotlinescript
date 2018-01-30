@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-
   resources :users, :sessions, :faqposts, :sections
   resources :acount_activations, only: [:edit]
 
-  root 'sections#index'
+  root 'static#home'
 
   #SECTIONS PAGES
   get '/section/' => "sections#index", as: "sections/index"
@@ -22,6 +21,8 @@ Rails.application.routes.draw do
   get '/harveyfaqold' => 'static#harvey_faq'
   get '/doesnotexist' => 'static#doesnotexist'
   get '/error' => 'static#permission_error'
+  get '/home' => 'static#home'
+  get '/help' => 'static#help'
 
   #USER PAGES
   get '/signup' => 'users#new'

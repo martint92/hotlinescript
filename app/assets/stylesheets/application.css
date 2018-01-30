@@ -78,6 +78,11 @@ main {
     font-size: 64px;
     line-height: 20px;
 }
+.centered {
+    display: block;
+    width: 60%;
+    margin: auto;
+}
 /* Sections Model and Controller Elements */
 .grid {
     border: solid rgb(45, 112, 197) px;

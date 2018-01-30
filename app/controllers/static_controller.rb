@@ -7,6 +7,10 @@ class StaticController < ApplicationController
   end
 
   def permission_error
+    respond_to do |format|
+      format.js
+      format.html
+    end 
   end
 
   def contact
@@ -17,5 +21,8 @@ class StaticController < ApplicationController
   
   def doesnotexist
   end
+
+  def help
+  end 
   
 end

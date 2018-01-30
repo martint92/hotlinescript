@@ -29,6 +29,10 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
+  config.assets.configure do |env|
+    env.register_transformer 'text/html'
+    env.register_mime_type 'text/html'
+  end 
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
