@@ -34,6 +34,10 @@ class SectionsController < ApplicationController
     @selected = Section.where(:title => params[:section_title]).first if @selected.nil?
   end 
 
+  def show
+    render 'index'
+  end 
+  
   def edit
     @section = Section.find(params[:id])
   end
