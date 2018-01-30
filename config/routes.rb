@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, :sessions, :faqposts, :sections
   resources :acount_activations, only: [:edit]
 
-  root 'static#home'
+  root 'sections#index'
 
   #SECTIONS PAGES
   get '/section/' => "sections#index", as: "sections/index"
