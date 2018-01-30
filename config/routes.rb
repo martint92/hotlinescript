@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'static#contact'
+  root 'static#help'
 
   %w( 404 406 422 500 503 ).each do |code|
     get code, :to => "errors#show", :code => code 
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get '/error' => 'static#permission_error'
   # Home is having super strange template errors 406 in production, but works 
   # locally. For now, switching home page to contact.html.erb as a quickfix.
-  get '/home' => 'static#contact'
+  get '/home' => 'static#help'
   get '/help' => 'static#help'
 
   #USER PAGES
