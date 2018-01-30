@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   root 'static#home'
 
+  %w( 404 422 500 503 ).each do |code|
+    get code, :to => "errors#show", :code => code 
+  end 
+
   #SECTIONS PAGES
   get '/section/' => "sections#index", as: "sections/index"
   get 'sections/new'
