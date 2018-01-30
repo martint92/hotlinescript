@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :users, :sessions, :faqposts, :sections, :static
-  resources :acount_activations, only: [:edit]
-
   root 'static#contact'
 
   %w( 404 406 422 500 503 ).each do |code|
@@ -47,4 +44,6 @@ Rails.application.routes.draw do
   get '/faqposts/:id/edit' => 'faqposts#edit', as: @faqpost
   post '/faqposts' => 'faqposts#update'
 
+  resources :users, :sessions, :faqposts, :sections, :static
+  resources :acount_activations, only: [:edit]
 end
