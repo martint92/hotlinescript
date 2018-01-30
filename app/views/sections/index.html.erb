@@ -12,5 +12,8 @@
         <div id="script-area">
             <%= render partial: "script_area", locals: { section: @selected } %>
         </div>
+        <div id="hotlinks">
+            <%= render partial: "hotlinks", locals: {hotlinks: Hotlink.all}%>
+        </div>
     </div>
 </div>

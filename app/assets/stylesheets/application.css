@@ -147,6 +147,14 @@ li {
 .sidebar-links:hover {
     background-color: grey;
 }
+/* Hotlinks */
+#hotlinks {
+    display: table-cell;
+    width: 15%;
+    border-left: 1px solid black;
+    height: 100%;
+    padding: 0.25em;
+}
 
 /* User Model Specific Elements */
 .signup-box {

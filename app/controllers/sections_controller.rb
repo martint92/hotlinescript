@@ -28,6 +28,7 @@ class SectionsController < ApplicationController
   def index 
     @sections = Section.all 
     @selected ||= Section.first
+    @hotlinks = Hotlink.all 
     respond_to do |format|
       format.js
       format.html

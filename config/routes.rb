@@ -44,6 +44,6 @@ Rails.application.routes.draw do
   get '/faqposts/:id/edit' => 'faqposts#edit', as: @faqpost
   post '/faqposts' => 'faqposts#update'
 
-  resources :users, :sessions, :faqposts, :sections, :static
+  resources :users, :sessions, :faqposts, :sections, :static, :hotlinks
   resources :acount_activations, only: [:edit]
 end

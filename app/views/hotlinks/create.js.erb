@@ -1,0 +1,3 @@
+$('#new-hotlink').hide();
+$('#hotlink').html('<%= j (render partial: "hotlinks", locals: {hotlinks: Hotlink.all}) %>');
+

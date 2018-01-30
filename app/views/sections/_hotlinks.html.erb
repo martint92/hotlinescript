@@ -1,0 +1,17 @@
+<h2>Hotlinks</h2>
+<div class="hotlink-area">
+    <% if current_user && current_user.editor? %>
+        <%= link_to "[new]", new_hotlink_path, remote: true, :class => "sidebar-links" %>
+    <% end %>
+    <% if hotlinks.nil? %>
+        <p>Currently there are no hotlinks</p>
+    <% else %>
+            <% hotlinks.each do |link| %>
+                <p>
+                    <%= link_to link.title, link.url, :class => "sidebar-links"%>
+                    <%= link_to '[X]', link, remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone."}, :class => "sidebar-links" if current_user && current_user.editor? %>
+                </p>
+            <% end %>
+    <% end %>
+</div>
+<div id="new-hotlink"></div>
