@@ -20,7 +20,8 @@ class StaticController < ApplicationController
 
     def help
     end 
-    
+
     def home
+        render 'home'
     end
 end
