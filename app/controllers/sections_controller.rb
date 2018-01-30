@@ -17,7 +17,7 @@ class SectionsController < ApplicationController
       flash[:notice] = "Error: Save Failed"
     end 
     @selected ||= Section.last
-    render 'index'
+    redirect_to '/'
   end 
       
   def index 
@@ -38,7 +38,8 @@ class SectionsController < ApplicationController
   end 
 
   def show
-    render 'index'
+    @selected = Section.first
+    redirect_to '/'
   end 
 
   def edit
@@ -46,17 +47,16 @@ class SectionsController < ApplicationController
     respond_to do |format|
       format.js
     end 
-    render 'index'
   end
 
   def update 
     @section = Section.find(params[:id])
     if @section.update_attributes(section_params)
       flash[:notice] = "Saved Successfully"
-      render 'index'
+      redirect_to '/'
     else 
       flash[:notice] = "Error: Update Failed"
-      render 'edit'
+      redirect_to '/'
     end 
   end 
 

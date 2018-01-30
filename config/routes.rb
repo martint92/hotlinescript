@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/section/' => "sections#index", as: "sections/index"
   get 'sections/new'
   get 'sections/index'
+  get '/section/:id' => 'sections#show'
   get 'sections/:id/edit' => 'sections#edit', as: @section
   get '/fetch_sections' => 'sections#from_sections', as: 'fetch_sections'
   get '/link_sections' => 'sections#from_link', as: 'fetch_sections_by_link'
