@@ -46,6 +46,7 @@ class SectionsController < ApplicationController
     respond_to do |format|
       format.js
     end 
+    render 'index'
   end
 
   def update 
