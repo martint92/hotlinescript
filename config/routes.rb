@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post '/user' => 'users#create'
   get '/user/list' => 'users#index'
   get '/user/:id/edit' => 'users#edit'
+  get '/user/:id' => 'users#show'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
