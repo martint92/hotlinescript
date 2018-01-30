@@ -1,6 +1,6 @@
-<%= link_to '[delete]', faqpost_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-button" if current_user && current_user.editor? %>
+<%= link_to '[delete]', section_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-button" if current_user && current_user.editor? %>
 <%= link_to '[edit]', edit_section_path(section), remote: true, :class => "edit-button" if current_user && current_user.editor? %>
-
+<br />
 <% if section.try(:title).blank? %>
     <h1>Sorry!</h1>
     <p>There seems to be some sort of error.</p>

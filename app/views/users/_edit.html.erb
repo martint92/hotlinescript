@@ -1,0 +1,26 @@
+<%= form_for(@user) do |f| %>
+<table class="profile-table">
+        <tr>
+            <td class="profile-td">First Name: </td>
+            <td class="profile-td"> <%= f.text_field :first_name %></td>
+        </tr>
+        <tr>
+            <td class="profile-td">Last Name: </td>
+            <td class="profile-td"><%= f.text_field :last_name %></td>
+        </tr>
+        <tr>
+            <td class="profile-td">Email: </td>
+            <td class="profile-td"><%= f.email_field :email %></td>
+        </tr>
+        <tr>
+            <td class="profile-td">Permissions: </td>
+            <td class="profile-td"><%= f.select :role, ['volunteer', 'editor', 'admin'], {}, {} %></td>
+        </tr>
+        <tr>
+            <td class="profile-td">Password: </td>
+            <td class="profile-td"><%= f.password_field :password %></td>
+        </tr>
+    </table>
+    <%= f.submit "Save Changes", :class => "btns" %>
+    <br /><br />
+<% end %>

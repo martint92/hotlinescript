@@ -1,7 +1,7 @@
 <div class="nested-fields">
     <div class="field">
         <%= f.select :option do %>
-            <% @sections.each do |section| %>
+            <% Section.all.each do |section| %>
                 <%= content_tag(:option, section.title) %>
             <% end %>
         <% end %> 

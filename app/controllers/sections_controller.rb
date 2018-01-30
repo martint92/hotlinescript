@@ -4,6 +4,9 @@ class SectionsController < ApplicationController
     @section = Section.new 
     @section.sub_sections.build 
     @section.links.build 
+    respond_to do |format|
+      format.js 
+    end
   end
 
   def create
@@ -19,7 +22,7 @@ class SectionsController < ApplicationController
       
   def index 
     @sections = Section.all 
-    @selected ||= Section.find(1) 
+    @selected ||= Section.first
     respond_to do |format|
       format.js
       format.html
@@ -37,9 +40,12 @@ class SectionsController < ApplicationController
   def show
     render 'index'
   end 
-  
+
   def edit
     @section = Section.find(params[:id])
+    respond_to do |format|
+      format.js
+    end 
   end
 
   def update 
@@ -55,6 +61,7 @@ class SectionsController < ApplicationController
 
   def destroy 
     @section = Section.find(params[:id]).destroy 
+    redirect_to "/"
   end 
 
   private 

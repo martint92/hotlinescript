@@ -1,23 +1,12 @@
 
 <br>
-<div class="signup-box">
-    <h1>Send an Invite</h1>
-    <%= form_for(@user) do |f| %>
-        <%= f.text_field :first_name, :placeholder => "First Name", :class => "signup-box-element" %> 
-        <%= f.text_field :last_name, :placeholder => "Last Name", :class => "signup-box-element" %> 
-        <%= f.email_field :email, :placeholder => "Email", :class => "signup-box-element" %>
-        <%= f.submit "Send Invite", class: "btn-submit" %>
-    <% end %>
-</div>
-
-<%= render 'form' %>
+<%= render "form" %>
 <div class="permissions">
   <h1>
     Notice
   </h1>
   <p>
-      Invite someone to join by submitting their name and email address. 
-      This will send them an email inviting them to create their own password. 
-      To assign them user permission, please contact an administrator.
+      You do not need to create a Login to use or view this script. This feature is 
+      only for editors and admins. 
   </p>    
 </div>

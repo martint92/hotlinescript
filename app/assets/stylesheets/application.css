@@ -11,6 +11,9 @@
     padding: 8px;
     margin-left: 50px;
 }
+.logo:hover {
+    background-color: rgb(200, 71, 64)
+}
 .nav-item {
     padding: 8px;
     text-decoration: none;
@@ -26,8 +29,8 @@
     float: right;
 }
 nav {
-    margin: 20px 8px;
-    float:left;
+    margin: 1.25em 4em;
+    display:inline-block;
 }
 header {
     background-color: rgb(230, 71, 64);
