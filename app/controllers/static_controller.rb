@@ -22,6 +22,5 @@ class StaticController < ApplicationController
     end 
 
     def home
-        render 'home'
     end
 end
