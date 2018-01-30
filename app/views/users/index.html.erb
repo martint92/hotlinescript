@@ -12,7 +12,7 @@
             <td class="user-list-table"><%= link_to "#{u.first_name} #{u.last_name}", u, :class => "linkage"%></td>
             <td class="user-list-table"><%= u.email %></td>
             <td class="user-list-table"><%= u.role.capitalize %></td>
-            <td class="user-list-table"><%= link_to 'Edit', edit_user_path(u), :class => "btns" %></td>
+            <td class="user-list-table"><%= link_to 'Edit', edit_user_path(u), :class => "btns", remote: true %></td>
             <td class="user-list-table"><%= link_to "Delete", u, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "btns" %></td>
         </tr>
     <% end %>

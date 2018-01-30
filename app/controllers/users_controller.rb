@@ -33,6 +33,9 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find(params[:id])
+        respond_to do |format|
+            format.js 
+        end 
     end
 
     def update
