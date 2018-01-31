@@ -8,9 +8,7 @@ Rails.application.routes.draw do
 
   #SECTIONS PAGES
   get '/section/' => "sections#index", as: "sections/index"
-  get 'sections/new'
   get 'sections/index'
-  get '/section/:id' => 'sections#show'
   get 'sections/:id/edit' => 'sections#edit', as: @section
   get '/fetch_sections' => 'sections#from_sections', as: 'fetch_sections'
   get '/link_sections' => 'sections#from_link', as: 'fetch_sections_by_link'
@@ -42,6 +40,6 @@ Rails.application.routes.draw do
   get '/faqposts/:id/edit' => 'faqposts#edit', as: @faqpost
   post '/faqposts' => 'faqposts#update'
 
-  resources :sessions, :faqposts, :sections, :static, :hotlinks, :users
+  resources :sessions, :faqposts, :sections, :hotlinks, :users
   resources :acount_activations, only: [:edit]
 end

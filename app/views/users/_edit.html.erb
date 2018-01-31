@@ -19,10 +19,15 @@
                 <td class="profile-td"><%= f.select :role, ['volunteer', 'editor', 'admin'], {}, {} %></td>
             </tr>
         <% when "editor" %>
-            <tr>
+            <% if @user.role == "admin" %>
                 <td class="profile-td">Permissions: </td>
-                <td class="profile-td"><%= f.select :role, ['volunteer', 'editor'], {}, {} %></td>               
-            </tr>
+                <td><p>Admin</p></td>
+            <% else %>
+                <tr>
+                    <td class="profile-td">Permissions: </td>
+                    <td class="profile-td"><%= f.select :role, ['volunteer', 'editor'], {}, {} %></td>               
+                </tr>
+            <% end %>
         <% when "volunteer" %>
             <tr>
                 <td class="profile-td">Permissions: </td>

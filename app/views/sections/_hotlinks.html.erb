@@ -1,6 +1,6 @@
 <h4>Hotlinks</h4>
 <div class="hotlink-area">
-    <% if current_user && current_user.editor? %>
+    <% if can_edit? %>
         <%= link_to "[new]", new_hotlink_path, remote: true, :class => "sidebar-links" %>
     <% end %>
     <% if hotlinks.nil? %>
