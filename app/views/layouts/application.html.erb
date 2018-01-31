@@ -8,7 +8,6 @@
   </head>
 
   <body>
-    <%= flash[:notice] %>
     <header>
       <%= link_to image_tag("logo_hilsc.png"), "/", :class => "logo" %>
       <nav>
@@ -18,7 +17,7 @@
       </nav>
       <div class="login">
         <% if current_user %>
-          <%= link_to current_user.first_name, current_user, :class => "nav-item" %>
+          <%= link_to current_user.first_name, user_path(current_user), :class => "nav-item" %>
           <%= link_to "Log out", '/logout', method: "delete", :class => "nav-item" %>
         <% else %>
           <%= link_to 'Login', '/login', :class => "nav-item"%>
@@ -28,6 +27,9 @@
     </header>
 
     <main>
+      <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+      <% end %>
       <%= yield %>
     </main>
 

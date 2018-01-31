@@ -22,17 +22,14 @@ Rails.application.routes.draw do
   get '/harveyfaqold' => 'static#harvey_faq'
   get '/doesnotexist' => 'static#doesnotexist'
   get '/error' => 'static#permission_error'
-  # Home is having super strange template errors 406 in production, but works 
-  # locally. For now, switching home page to contact.html.erb as a quickfix.
   get '/home' => 'static#home'
   get '/help' => 'static#help'
 
   #USER PAGES
-  get '/signup' => 'users#new'
-  post '/user' => 'users#create'
-  get '/user/list' => 'users#index'
-  get '/user/:id/edit' => 'users#edit'
-  get '/user/:id' => 'users#show'
+  get '/test' => 'users#test'
+  get '/user/list' => "users#index"
+  get 'profile', to: 'users#show'
+  get '/edit_permissions' => "users#edit_permissions", as: 'edit_permissions'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -45,6 +42,6 @@ Rails.application.routes.draw do
   get '/faqposts/:id/edit' => 'faqposts#edit', as: @faqpost
   post '/faqposts' => 'faqposts#update'
 
-  resources :users, :sessions, :faqposts, :sections, :static, :hotlinks
+  resources :sessions, :faqposts, :sections, :static, :hotlinks, :users
   resources :acount_activations, only: [:edit]
 end

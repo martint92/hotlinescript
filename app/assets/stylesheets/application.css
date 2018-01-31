@@ -41,6 +41,13 @@ header {
 }
 
 /* Body and Main Items */
+.notice {
+    text-align: center;
+    padding: 1em;
+    background-color: pink;
+    color: red;
+    font-size: 18px;
+}
 body {
     height: 100vh;
 }
@@ -48,6 +55,7 @@ main {
     margin: 0 5%;
     background-color: rgb(240, 240, 240);
     min-height: 100%;
+    padding: 2em;
 }
 /* Static Page Specific Elements */
 #maintenance-post {
@@ -165,10 +173,10 @@ li {
 }
 .permissions {
     border: 2px solid rgb(200, 71, 64);
-    float: left;
-    max-width: 600px;
-    min-height: 300px;
-    margin: 60px 20px;
+    display: inline-block;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 2em;
 }
 .permissions h1 {
     background-color: rgb(230, 71, 64);
@@ -228,6 +236,7 @@ li {
     background-color: rgb(230, 71, 64);
     color: white;
     text-decoration: none;
+    border-style: none;
 }
 .btns:visited {
     color: white;

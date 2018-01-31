@@ -12,15 +12,26 @@
             <td class="profile-td">Email: </td>
             <td class="profile-td"><%= f.email_field :email %></td>
         </tr>
-        <% if current_user && current_user.editor? %>
-            <tr>
-                <td class="profile-td">Permissions: </td>
-                <td class="profile-td"><%= f.select :role, ['volunteer', 'editor'], {}, {} %></td>
-            </tr>
-        <% elsif current_user && current_user.admin? %>
+        <% case current_user.role %>
+        <% when "admin" %>
             <tr>
                 <td class="profile-td">Permissions: </td>
                 <td class="profile-td"><%= f.select :role, ['volunteer', 'editor', 'admin'], {}, {} %></td>
+            </tr>
+        <% when "editor" %>
+            <tr>
+                <td class="profile-td">Permissions: </td>
+                <td class="profile-td"><%= f.select :role, ['volunteer', 'editor'], {}, {} %></td>               
+            </tr>
+        <% when "volunteer" %>
+            <tr>
+                <td class="profile-td">Permissions: </td>
+                <td class="profile-td"><p>Volunteer</p></td>
+                <td>Please contact an admin if you need editor permissions</td>
+            </tr>
+        <% else %>
+            <tr>
+                <td><p>Error 500: Internal Error.</p></td>
             </tr>
         <% end %>
         <tr>

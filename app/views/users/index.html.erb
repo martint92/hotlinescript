@@ -1,4 +1,3 @@
-
 <br>
 <h1 class="user-list-title">List of All Users</h1>
 
@@ -13,9 +12,7 @@
             <td class="user-list-table"><%= link_to "#{u.first_name} #{u.last_name}", u, :class => "linkage"%></td>
             <td class="user-list-table"><%= u.email %></td>
             <td class="user-list-table"><%= u.role.capitalize %></td>
-            <td class="user-list-table"><%= link_to 'See User', u, :class => "btns" %></td>
-            <td class="user-list-table"><%= link_to "Delete", u, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "btns" %></td>
+            <td class="user-list-table"><%= link_to 'Details', user_path(u), :class => "btns" %></td>                    
         </tr>
     <% end %>
 </table>
-

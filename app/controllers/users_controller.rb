@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
 
     #before_action :require_editor, only: [:new]
+    before_action :require_user, only: [:index, :show]
 
     def index
         @users = User.order(role: :asc)
     end
 
     def show
-        @user = User.find(params[:id])
+        begin
+            @user = User.find(params[:id])
+        rescue 
+            @user ||= current_user
+        end 
         respond_to do |format|
             format.js
             format.html
@@ -43,9 +48,11 @@ class UsersController < ApplicationController
         @user.role ||= 'volunteer'
         if current_user && current_user.admin?
             @user.update_attributes(user_params_admin)
-            render 'show'
+            @users = User.all 
+            render 'index'
         elsif @user.update_attributes(user_params)
-            render 'show'
+            @users = User.all
+            render 'index'
         else
             render 'edit'
         end
@@ -53,7 +60,7 @@ class UsersController < ApplicationController
 
     def destroy 
         User.find(params[:id]).destroy
-        flash[:success] = "User Deleated"
+        flash[:notice] = "User Deleated"
         render 'index'
     end
 
