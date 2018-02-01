@@ -1,6 +1,17 @@
 class Section < ApplicationRecord
-    has_many :sub_sections, inverse_of: :section, dependent: :destroy 
-    has_many :links, inverse_of: :section, dependent: :destroy
-    accepts_nested_attributes_for :sub_sections, reject_if: :all_blank, allow_destroy: true
-    accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
+
+    validates :title, presence: true 
+    validates :body, presence: true 
+    
+
+    # Sub_Section Association
+    has_many :sub_sections, dependent: :destroy, inverse_of: :section
+    validates_associated :sub_sections
+    accepts_nested_attributes_for :sub_sections, allow_destroy: true
+
+    # Link Assocation
+    has_many :links, dependent: :destroy
+    validates_associated :links
+    accepts_nested_attributes_for :links, allow_destroy: true
+
 end

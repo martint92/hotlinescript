@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'sections/:id/edit' => 'sections#edit', as: @section
   get '/fetch_sections' => 'sections#from_sections', as: 'fetch_sections'
   post "/sections" => "sections#create"
-  patch "/sections/" => "sections#update"
+  patch "/sections" => "sections#update"
 
   #STATIC PAGES
   get '/maintenance' => 'static#maintenance'
@@ -19,15 +19,15 @@ Rails.application.routes.draw do
   get '/help' => 'static#help'
 
   #USER PAGES
-  get '/test' => 'users#test'
   get '/user/list' => "users#index"
-  get 'profile', to: 'users#show'
   get '/edit_permissions' => "users#edit_permissions", as: 'edit_permissions'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  resources :sessions, :sections, :section, :hotlinks, :users
+  resources :sections, :users
+  resources :sessions, only: [:new, :create, :destroy]
   resources :acount_activations, only: [:edit]
+  resources :hotlinks, only: [:new, :create, :destroy]
 end

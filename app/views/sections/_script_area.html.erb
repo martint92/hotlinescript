@@ -1,13 +1,15 @@
-<% if can_edit? %>
-<%= link_to '[delete]', section_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-button" %>
-<%= link_to '[edit]', edit_section_path(section), remote: true, :class => "edit-button" %>
-<%= link_to '[new]', new_section_path, :remote => true, :class => 'edit-button' %>
-<% end %>
-<br />
+<%= link_to '[new]', new_section_path, :remote => true, :class => 'edit-button' if can_edit? %>
 <% if section.try(:title).blank? %>
-    <h1>Sorry!</h1>
-    <p>There seems to be some sort of error.</p>
+    <br>
+    <h1>There's Nothing Here!</h1>
+    <p>Nothing has been posted here!</p>
+    <p>If you're not en editor or admin, you cannot create any posts. Please ask them to create content for you.</p>
 <% else %>
+    <% if can_edit? %>
+    <%= link_to '[delete]', section_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-button" %>
+    <%= link_to '[edit]', edit_section_path(section), remote: true, :class => "edit-button" %>
+    <% end %>
+    <br />
     <h1><%= section.title %></h1>
     <p><%= section.body.html_safe %></p>
     <% if section.sub_sections %>

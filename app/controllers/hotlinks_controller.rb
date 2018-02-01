@@ -1,6 +1,6 @@
 class HotlinksController < ApplicationController
 
-    before_action :require_editor, only: [:new, :edit]
+    before_action :require_editor, only: [:new, :destroy]
 
     def new
         @hotlink = Hotlink.new
@@ -11,19 +11,6 @@ class HotlinksController < ApplicationController
 
     def create
         @hotlink = Hotlink.create!(hotlink_params)
-        redirect_to '/sections'
-    end 
-
-    def edit 
-        @hotlink = Hotlink.find(params[:id])
-        respond_to do |format|
-            format.js
-          end 
-    end 
-
-    def update
-        @hotlink = Hotlink.find(params[:id])
-        @hotlink.update_attributes(hotlink_params)
         redirect_to '/sections'
     end 
 

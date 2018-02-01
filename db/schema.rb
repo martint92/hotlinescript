@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 20180130190121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "faqposts", force: :cascade do |t|
-    t.string "faqpost_title"
-    t.text "faqpost_body"
-    t.string "faqpost_author"
-    t.string "faqpost_editor"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "hotlinks", force: :cascade do |t|
     t.string "title"
     t.text "url"
@@ -63,11 +54,11 @@ ActiveRecord::Schema.define(version: 20180130190121) do
     t.string "email"
     t.string "password_digest"
     t.string "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "activation_digest"
     t.boolean "activation"
     t.datetime "activation_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "links", "sections"

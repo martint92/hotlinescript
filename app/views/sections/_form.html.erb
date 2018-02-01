@@ -1,34 +1,28 @@
 <div class="section-form">
     <%= form_for @section do |f| %>
         <div class="field">
-            <p>Title</p>
-            <%= f.text_field :title %>
+            <h5>Title</h5>
+            <%= f.text_field :title %><br>
             <%= f.cktext_area :body %>
         </div>
-        <% if @section.sub_sections.any? %>
-            <div id="sub-sections">
-                <% @section.sub_sections.each do |ss| %>
-                    <%= fields_for(ss) do |s| %>
-                        <%= render 'sub_section_fields', f: s %>
-                    <% end %>
-                <% end %>
-        <% end %>
-                <div class="add-associations">
-                    <%= link_to_add_association 'Add Sub-Section', f, :sub_sections, partial: 'sub_section_fields' %>
-                </div>
+        <div id="sub-sections">
+            <br><br>
+            <%= f.fields_for :sub_sections do |s| %>
+                <%= render 'sub_section_fields', f: s %>
+            <% end %>
+            <div class="add-associations">
+                <%= link_to_add_association 'Add Sub-Section', f, :sub_sections, partial: 'sub_section_fields' %>
             </div>
-        <% if @section.links.any? %>
-            <div id="links">
-                <% @section.links.each do |ll| %>
-                    <%= fields_for ll do |l| %>
-                        <% render 'link_fields', f: l %>
-                    <% end %>
-                <% end %>
-        <% end %>
-                <div class="add-associations">
-                    <%= link_to_add_association 'Add Links to other sections', f, :links %>
-                </div>
+        </div>
+        <div id="links">
+            <%= f.fields_for :links do |l| %>
+                <% render 'link_fields', f: l %>
+            <% end %>
+            <br>
+            <div class="add-associations">
+                <%= link_to_add_association 'Add Links to other sections', f, :links %>
             </div>
+        </div>
         <%= f.submit "Submit", :class => "btn-submit" %>
     <% end %>
 </div>

@@ -59,6 +59,8 @@ main {
 }
 .success {
     background-color: lightgreen;
+    text-align: center;
+    padding: 1em;
     color: green;
 }
 /* Static Page Specific Elements */

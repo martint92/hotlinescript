@@ -32,7 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 #Rich Text Editor
-gem 'ckeditor', '~> 4.2.4'
+#gem 'ckeditor', '~> 4.2.4'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 #jQuery 
 gem 'jquery-rails', '~> 4.3.1'
 #Cocoon for nested forms

@@ -6,6 +6,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :password_digest
       t.string :role
+      t.string :activation_digest 
+      t.boolean :activation 
+      t.datetime :activation_at
       t.timestamps
     end
   end

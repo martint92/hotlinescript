@@ -1,17 +1,18 @@
 <br />
 <h1 class="script-h1">Immigration Rights Hotline Script</h1>
 <br />
-<% if flash[:success] %>
-    <div class="success"><%= flash[:success] %></div>
-<% end %>
+
 <div id="border-effect">
     <div class="grid">
         <%= render 'sidebar_menu' %>
         <div id="script-area">
+            <% if flash[:success] %>
+                <div class="success"><%= flash[:success] %></div>
+            <% end %>
             <%= render partial: "script_area", locals: { section: @selected } %>
         </div>
         <div id="hotlinks">
-            <%= render partial: "hotlinks", locals: {hotlinks: Hotlink.all}%>
+            <%= render partial: "hotlinks", locals: {hotlinks: @hotlinks}%>
         </div>
     </div>
 </div>
