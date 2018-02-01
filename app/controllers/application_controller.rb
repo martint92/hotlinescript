@@ -24,10 +24,10 @@ class ApplicationController < ActionController::Base
   end
   
   def require_admin
-    redirect_to '/error' unless current_user && current_user.admin?
+    redirect_to '/error' unless can_edit?
   end
     
   def require_editor
-    redirect_to '/error' unless current_user && (current_user.editor? || current_user.admin?)
+    redirect_to '/error' unless can_edit?
   end 
 end

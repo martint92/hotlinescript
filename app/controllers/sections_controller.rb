@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
   
-  before_action :require_editor, only: [:new, :edit]
+  before_action :require_editor, only: [:new, :create, :edit, :update, :destroy]
   before_action :require_user
 
   def new
@@ -17,12 +17,12 @@ class SectionsController < ApplicationController
   def create
     @section = Section.create(section_params)
     if @section.save
-      flash[:notice] = "Saved Successfully"
+      flash[:success] = "Saved Successfully"
     else 
       flash[:notice] = "Error: Save Failed"
     end 
     @selected ||= Section.last
-    redirect_to '/'
+    redirect_to sections_index_path
   end 
       
   def index 
@@ -45,7 +45,7 @@ class SectionsController < ApplicationController
 
   def show
     @selected = Section.first
-    redirect_to '/'
+    redirect_to section_index_path
   end 
 
   def edit

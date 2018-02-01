@@ -4,8 +4,23 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+admin: 
+  first_name: MyString
+  last_name: MyString
+  email: admin@email.com
+  password_digest: <%= BCrypt::Password.create('password1', cost: 5) %>
+  role: admin
+
+editor: 
+  first_name: martin
+  last_name: thomas
+  email: editor@email.com
+  password_digest: <%= BCrypt::Password.create('password1', cost: 5) %>
+  role: editor
+
+volunteer:
+  first_name: volunteer
+  last_name: houston
+  email: volunteer@email.com
+  password_digest: <%= BCrypt::Password.create('password1', cost: 5) %>
+  role: volunteer

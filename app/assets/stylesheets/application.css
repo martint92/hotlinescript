@@ -57,6 +57,10 @@ main {
     min-height: 100%;
     padding: 2em;
 }
+.success {
+    background-color: lightgreen;
+    color: green;
+}
 /* Static Page Specific Elements */
 #maintenance-post {
     margin-top: 100px;
