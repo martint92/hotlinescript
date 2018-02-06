@@ -3,15 +3,9 @@ class ScriptResourcesMailer < ApplicationMailer
     default from: "immigrationhotlineTX@gmail.com"
 
     # http://localhost:3000/rails/mailers/script_resources_mailer/test_email_preview.html
-    def test_email(guest)
-        @guest = guest 
+    def test_email(user)
+        @user = user
         # mail(to: @guest, subject: 'Test Email')
-        mail(to: "martin_thomas@alumni.baylor.edu", subject: 'Test Email')
+        mail(to: @user.email , subject: 'Test Email')
     end 
-
-    def sample_email(user)
-        recipients  user.email 
-        from        "Immigration Hotline <immigrationhotlineTX@gmail.com>"
-        subject     "Testing Sample Email"
-        sent_to     Time.now 
 end

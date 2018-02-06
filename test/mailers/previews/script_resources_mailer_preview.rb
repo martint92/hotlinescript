@@ -4,5 +4,4 @@ class ScriptResourcesMailerPreview < ActionMailer::Preview
     def test_email_preview
         ScriptResourcesMailer.test_email("test@email.com")
     end
-
 end
