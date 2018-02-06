@@ -1,0 +1,15 @@
+<%= form_for(@guest, remote: true) do |f| %>
+    <%= f.label :email, "Email:" %>
+    <%= f.email_field :email %>
+    <%= f.label :subject, "Which Email to Send?" %>
+    <% if Email.all.any? %>
+        <%= f.select :subject do %>
+            <% Email.all.each do |email| %>
+                <%= content_tag(:option, email.subject) %>
+            <% end %>
+        <% end %>
+    <% else  %>
+        <p>There are no emails to send. Please ask an editor to create some</p>
+    <% end %>
+    <%= f.submit "Submit", :class => "btns" %>
+<% end %> 

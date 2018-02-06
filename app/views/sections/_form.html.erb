@@ -4,6 +4,9 @@
             <h5>Title</h5>
             <%= f.text_field :title %><br>
             <%= f.cktext_area :body %>
+            <br>
+            <%= f.label :mailer, "Include Mailer?" %>
+            <%= f.checkbox :mailer %>
         </div>
         <div id="sub-sections">
             <br><br>

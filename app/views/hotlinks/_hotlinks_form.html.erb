@@ -1,4 +1,4 @@
-<%= form_for @hotlink do |f| %>
+<%= form_for(@hotlink, remote: true) do |f| %>
     <p>Title of Link</p>
     <%= f.text_field :title %>
     <p>URL for Link</p>

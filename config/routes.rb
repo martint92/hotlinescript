@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  resources :sections, :users, :emails
+  resources :sections, :users, :emails, :guests
   resources :sessions, only: [:new, :create, :destroy]
   resources :acount_activations, only: [:edit]
   resources :hotlinks, only: [:new, :create, :destroy]

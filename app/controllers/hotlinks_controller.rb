@@ -5,13 +5,15 @@ class HotlinksController < ApplicationController
     def new
         @hotlink = Hotlink.new
         respond_to do |format|
-            format.js
-          end 
+          format.js
+        end 
     end 
 
     def create
+        respond_to do |format|
+            format.js 
+        end 
         @hotlink = Hotlink.create!(hotlink_params)
-        redirect_to '/sections'
     end 
 
     def destroy

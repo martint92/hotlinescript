@@ -12,6 +12,10 @@
     <br />
     <h1><%= section.title %></h1>
     <p><%= section.body.html_safe %></p>
+    <br>
+    <div id="guest-q"><p>Would the caller like information emailed to them?  <%= link_to "Yes", new_guest_path, remote: true %></p></div>
+    <div id="e-sent"></div>
+    <div id="new-guest"></div>
     <% if section.sub_sections %>
         <% section.sub_sections.each do |ss| %>
             <div class="qaa-box">
