@@ -7,7 +7,6 @@ class SectionsController < ApplicationController
     @sections = Section.all 
     @selected ||= Section.first
     @hotlinks = Hotlink.all 
-    ScriptResourcesMailer.test_email(User.first)
     respond_to do |format|
       format.js
       format.html
