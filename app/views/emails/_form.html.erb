@@ -1,0 +1,7 @@
+<%= form_for @email do |f| %>
+    <p>Subject:</p>
+    <%= f.text_field :subject %><br>
+    <p>Body</p>
+    <%= f.cktext_area :content %>
+    <%= f.submit "Submit", :class => "btn-submit" %>
+<% end %>

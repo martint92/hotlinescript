@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130190121) do
+ActiveRecord::Schema.define(version: 20180206144707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "emails", force: :cascade do |t|
+    t.string "subject"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "hotlinks", force: :cascade do |t|
     t.string "title"
@@ -28,6 +35,13 @@ ActiveRecord::Schema.define(version: 20180130190121) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["section_id"], name: "index_links_on_section_id"
+  end
+
+  create_table "mailers", force: :cascade do |t|
+    t.string "subject"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sections", force: :cascade do |t|

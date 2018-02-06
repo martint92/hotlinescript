@@ -10,7 +10,6 @@ class StaticController < ApplicationController
     end
 
     def help
-        ScriptResourcesMailer.test_email(User.first).deliver_now 
     end 
 
     def home

@@ -1,0 +1,8 @@
+<div>
+    <h1>Subject: <%= @email.subject %></h1>
+    <p><%= @email.content.html_safe %></p>
+    <br> 
+</div>
+<div>
+    <%= render 'form' %>
+</div>
