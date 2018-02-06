@@ -1,8 +1,13 @@
-<div>
-    <h1>Subject: <%= @email.subject %></h1>
-    <p><%= @email.content.html_safe %></p>
+<div id="preview-email">
+    <h1>Email Preview</h1>
+    <h5>To: Person@example.com </h5>
+    <h5>From: hotline@houstonimmigration.com</h5>
+    <h5>Subject: <%= @email.subject %></h5>
+    <h1></h1><br>
+    <p id="email-body"><%= @email.content.html_safe %></p>
     <br> 
 </div>
-<div>
+<div id="new-email">
+    <h1>Edit Email Template</h1>
     <%= render 'form' %>
 </div>

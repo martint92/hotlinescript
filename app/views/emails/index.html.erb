@@ -1,14 +1,23 @@
-<h1>Custom Emails</h1>
-<p>Here are all the email templates that may be used.</p>
-<%= link_to "New Email Template", new_email_path %>
-<% if @emails.nil? || @emails.blank? || @emails.empty? %>
-    <p>There are no emails, why don't you add one?</p>
-<% else %>
-    <ul>
-        <% @emails.each do |email| %>
-            <li><%= link_to email.subject, email_path(email) %> <%= link_to "[delete]", email_path(email), remote: true, method: :delete, data: { confirm: "Are you sure?"} %> </li>
-        <% end %>
-    </ul>
-<% end %>
-
+<div id="emails-index">
+    <h1>Custom Emails</h1>
+    <p>Here are all the email templates that may be used.</p><br>
+    <%= link_to "New Email Template", new_email_path %>
+    <br><br>
+    <% if @emails.nil? || @emails.blank? || @emails.empty? %>
+        <p>There are no emails, why don't you add one?</p>
+    <% else %>
+        <table>
+            <tr>
+                <th>View Edit</th>
+                <th>Delete</th>
+            </tr>
+            <% @emails.each do |email| %>
+                <tr>
+                    <td><%= link_to email.subject, email_path(email) %> </td>
+                    <td><%= link_to "[x]", email_path(email), remote: true, method: :delete, data: { confirm: "Are you sure?"} %> </td>
+                </tr>
+            <% end %>
+        </table>
+    <% end %>
+</div>
 

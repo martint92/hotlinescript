@@ -337,3 +337,26 @@ li {
 .edit-button a:visited {
     color: blue;
 }
+/* mailer model and controller */
+#emails-index {
+    padding: 1em;
+}
+#emails-index table td {
+    padding: 6px;
+}
+#preview-email {
+    margin: 2em;
+    padding: 1em;
+    border: 2px solid black;
+}
+#preview-email h1 {
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid black;
+}
+#email-body {
+    margin: 12px 24px;
+}
+#new-email {
+    margin-top: 2em;
+}
