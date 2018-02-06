@@ -6,7 +6,9 @@
             <%= f.cktext_area :body %>
             <br>
             <%= f.label :mailer, "Include Mailer?" %>
-            <%= f.checkbox :mailer %>
+            <%= f.check_box :mailer %><br>
+            <%= f.label :alert, "(Optional)Pop-Up Reminder" %>
+            <%= f.text_field :alert %>
         </div>
         <div id="sub-sections">
             <br><br>

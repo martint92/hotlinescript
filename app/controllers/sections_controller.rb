@@ -78,7 +78,7 @@ class SectionsController < ApplicationController
 
   private 
     def section_params
-      params.require(:section).permit(:title, :body, 
+      params.require(:section).permit(:title, :body, :alert, :mailer,
       sub_sections_attributes: [:id, :title, :body, :_destroy], 
       links_attributes: [:id, :option, :_destroy])
     end 

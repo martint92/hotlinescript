@@ -9,13 +9,20 @@
     <%= link_to '[delete]', section_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-button" %>
     <%= link_to '[edit]', edit_section_path(section), remote: true, :class => "edit-button" %>
     <% end %>
+    <% if section.alert.nil? == false %>
+        <%= javascript_tag do %>
+            alert('<%= section.alert %>');
+        <% end %>
+    <% end %>
     <br />
     <h1><%= section.title %></h1>
     <p><%= section.body.html_safe %></p>
     <br>
-    <div id="guest-q"><p>Would the caller like information emailed to them?  <%= link_to "Yes", new_guest_path, remote: true %></p></div>
-    <div id="e-sent"></div>
-    <div id="new-guest"></div>
+    <% if section.mailer.nil? == false %>
+        <div id="guest-q"><p>Would the caller like information emailed to them?  <%= link_to "Yes", new_guest_path, remote: true %></p></div>
+        <div id="e-sent"></div>
+        <div id="new-guest"></div>
+    <% end %>
     <% if section.sub_sections %>
         <% section.sub_sections.each do |ss| %>
             <div class="qaa-box">
