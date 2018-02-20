@@ -9,7 +9,13 @@ class StaticController < ApplicationController
         end 
     end
 
+    def tracking
+    end 
+
     def help
+    end 
+
+    def referrals
     end 
 
     def home

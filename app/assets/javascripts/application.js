@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/widgets/sortable
+//= require rails_sortable
 //= require turbolinks
 //= require cocoon
+//= require ckeditor/init
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
@@ -21,5 +24,5 @@ document.addEventListener("turbolinks:load", function() {
     $(this).next().slideToggle(400);
     $(this).find('img').toggle();
     })
-	$(".answers-box").hide(); 
+  $(".answers-box").hide(); 
 })

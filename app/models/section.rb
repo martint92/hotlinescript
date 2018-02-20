@@ -1,17 +1,16 @@
 class Section < ApplicationRecord
-
-    validates :title, presence: true 
-    validates :body, presence: true 
+    include RailsSortable::Model 
+    set_sortable :priority, without_updating_timestamps: true 
     
+    belongs_to :topic 
 
     # Sub_Section Association
     has_many :sub_sections, dependent: :destroy, inverse_of: :section
-    validates_associated :sub_sections
     accepts_nested_attributes_for :sub_sections, allow_destroy: true
 
-    # Link Assocation
-    has_many :links, dependent: :destroy
-    validates_associated :links
-    accepts_nested_attributes_for :links, allow_destroy: true
+    before_create :assign_css_id
 
+    def assign_css_id
+        self.css_id = SecureRandom.uuid
+    end 
 end

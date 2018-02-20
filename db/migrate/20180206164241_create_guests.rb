@@ -4,7 +4,6 @@ class CreateGuests < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :subject
       t.text :content
-
       t.timestamps
     end
   end

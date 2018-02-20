@@ -36,6 +36,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 #jQuery 
 gem 'jquery-rails', '~> 4.3.1'
+gem 'jquery-ui-rails'
+gem 'rails_sortable'
 #Cocoon for nested forms
 gem 'cocoon'
 

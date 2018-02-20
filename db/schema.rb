@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206164241) do
+ActiveRecord::Schema.define(version: 20180219164108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180206164241) do
   create_table "emails", force: :cascade do |t|
     t.string "subject"
     t.text "content"
+    t.uuid "css_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,41 +34,58 @@ ActiveRecord::Schema.define(version: 20180206164241) do
   create_table "hotlinks", force: :cascade do |t|
     t.string "title"
     t.text "url"
+    t.uuid "css_id"
+    t.integer "priority"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "links", force: :cascade do |t|
-    t.text "option"
-    t.bigint "section_id"
+  create_table "instructions", force: :cascade do |t|
+    t.string "header"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["section_id"], name: "index_links_on_section_id"
   end
 
-  create_table "mailers", force: :cascade do |t|
-    t.string "subject"
-    t.text "content"
+  create_table "micro_sections", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "sub_section_id"
+    t.uuid "css_id"
+    t.integer "priority"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sub_section_id"], name: "index_micro_sections_on_sub_section_id"
   end
 
   create_table "sections", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.boolean "mailer"
-    t.string "alert"
+    t.bigint "topic_id"
+    t.uuid "css_id"
+    t.integer "priority"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_sections_on_topic_id"
   end
 
   create_table "sub_sections", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.bigint "section_id"
+    t.uuid "css_id"
+    t.integer "priority"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["section_id"], name: "index_sub_sections_on_section_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "title"
+    t.integer "priority"
+    t.uuid "css_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,10 +97,12 @@ ActiveRecord::Schema.define(version: 20180206164241) do
     t.string "activation_digest"
     t.boolean "activation"
     t.datetime "activation_at"
+    t.uuid "css_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "links", "sections"
+  add_foreign_key "micro_sections", "sub_sections"
+  add_foreign_key "sections", "topics"
   add_foreign_key "sub_sections", "sections"
 end

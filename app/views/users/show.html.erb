@@ -25,5 +25,17 @@
     <%= link_to "Edit Profile", edit_user_path(@user), :class => "btns", remote: true %>
     <%= link_to "Delete Profile", @user, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "btns" %>
     <%= link_to 'See All Users', '/user/list', :class => "btns"%>
-    <%= link_to 'Edit Email Templates', '/emails', :class => "btns" if can_edit? %>
+    <% if is_admin? %>
+        <%= link_to 'Edit Email Templates', '/emails', :class => "btns" %>
+        <% if Instruction.all.any? %>
+            <%= link_to 'Edit Instruction(Home Page) Template', edit_instruction_path(Instruction.first), class: "btns" %>
+        <% else %>
+            <%= link_to 'Edit Instruction(Home Page) Template', '/instructions/new', class: "btns" %>
+        <% end %>
+    <% elsif can_edit? %>
+        <%= link_to 'Edit Email Templates', '/emails', :class => "btns" %>
+    <% else %>
+    <% end %>
+
+    
 </div>

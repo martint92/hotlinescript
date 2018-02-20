@@ -1,0 +1,4 @@
+<%= form_for(@topic, remote: true) do |f| %>
+    <%= f.text_field :title, placeholder: "Topic" %>
+    <%= f.submit "Submit" %>
+<% end %>

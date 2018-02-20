@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user
   helper_method :can_edit?
+  helper_method :is_admin?
         
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -18,13 +19,17 @@ class ApplicationController < ActionController::Base
       false 
     end 
   end 
+
+  def is_admin?
+    current_user.role == 'admin' ? true : false 
+  end 
   
   def require_user
     redirect_to '/error' unless current_user
   end
   
   def require_admin
-    redirect_to '/error' unless can_edit?
+    redirect_to '/error' unless current_user && current_user.role == 'admin' 
   end
     
   def require_editor

@@ -1,17 +1,14 @@
 class User < ApplicationRecord
+    attr_accessor :activation_token 
  
+    before_create :set_defaults, :assign_css_id, :create_activation_digest
     before_save :email_downcase
-
-    validates :first_name,  presence: true, length: { maximum: 50 }
-    validates :last_name,  presence: true, length: { maximum: 50 }
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
     validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
     has_secure_password
-
-    validates :password, presence: true, length: { minimum: 6 }
 
 
     def editor?
@@ -22,6 +19,10 @@ class User < ApplicationRecord
             false 
         end 
     end
+
+    def set_defaults
+        self.role = 'volunteer'
+    end 
 
     def admin?
         self.role == 'admin' ? true : false 
@@ -36,8 +37,18 @@ class User < ApplicationRecord
         BCrypt::Password.create(string, cost: cost)
     end
 
-    def email_downcase
-        self.email = email.downcase
-    end 
+    private
+        def create_activation_digest
+            self.activation_token = User.new_token
+            self.activation_digest = User.digest(activation_token)
+        end 
+
+        def email_downcase
+            self.email = email.downcase
+        end 
+
+        def assign_css_id
+            self.css_id = SecureRandom.uuid
+        end 
 end 
 

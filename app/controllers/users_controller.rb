@@ -7,6 +7,11 @@ class UsersController < ApplicationController
         @users = User.order(role: :asc)
     end
 
+    def invite 
+        @user = User.new 
+        respond_to :js 
+    end 
+
     def show
         begin
             @user = User.find(params[:id])
@@ -21,13 +26,10 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
-       
     end
 
     def create
         @user = User.new(user_params)
-        @user.password ||= 'password1'
-        @user.role ||= 'volunteer'
         if @user.save
             session[:user_id] = @user.id 
             redirect_to '/'

@@ -30,30 +30,25 @@ class SectionsController < ApplicationController
     @sections = Section.all 
     @section = Section.new 
     @section.sub_sections.build 
-    @section.links.build 
     respond_to do |format|
       format.js 
-      format.html
     end
   end
 
   def create
     @section = Section.create(section_params)
-    if @section.save
+    if @section.save!
       flash[:success] = "Saved Successfully"
     else 
       flash[:notice] = "Error: Save Failed"
     end 
     @selected ||= Section.last
-    redirect_to sections_index_path
+    respond_to(:js)
   end 
 
   def edit
     @section = Section.find(params[:id])
-    respond_to do |format|
-      format.js
-      format.html
-    end 
+    respond_to :js 
   end
 
   def update 
@@ -62,23 +57,19 @@ class SectionsController < ApplicationController
     rescue 
       @section = Section.where(:id => params[:section_id]).first
     end
-    if @section.update_attributes(section_params)
-      flash[:success] = "Saved Successfully"
-      redirect_to sections_index_path
-    else 
-      flash[:notice] = "Error: Update Failed"
-      redirect_to sections_index_path
-    end 
+    @section.update_attributes(section_params)
+    respond_to :js, :html
   end 
 
   def destroy 
     @section = Section.find(params[:id]).destroy 
-    redirect_to sections_index_path
+    @selected = Topic.first 
+    respond_to(:js)
   end 
 
   private 
     def section_params
-      params.require(:section).permit(:title, :body, :alert, :mailer,
+      params.require(:section).permit(:title, :body, :topic_id,
       sub_sections_attributes: [:id, :title, :body, :_destroy], 
       links_attributes: [:id, :option, :_destroy])
     end 

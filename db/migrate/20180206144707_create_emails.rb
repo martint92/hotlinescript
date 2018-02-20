@@ -3,7 +3,7 @@ class CreateEmails < ActiveRecord::Migration[5.1]
     create_table :emails do |t|
       t.string :subject
       t.text :content
-
+      t.uuid :css_id
       t.timestamps
     end
   end

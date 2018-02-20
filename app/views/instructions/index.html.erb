@@ -1,0 +1,11 @@
+<% if Instruction.all.any? %>
+    <div id="instructions">
+        <h1><%= @instruction.header.html_safe %></h1>
+        <p><%= @instruction.body.html_safe %></p>
+    </div>
+<% else %>
+    <div id="instructions">
+        <h1>Nothing's Here!</h1>
+        <p>The instructions page has not yet been added. Please contact an Admin to have them update or create it! </p>
+    </div>
+<% end %>

@@ -1,32 +1,22 @@
 <div class="section-form">
-    <%= form_for @section do |f| %>
+    <%= form_for(@section, remote: true) do |f| %>
+        <%= f.label :topic_id, 'What topic does this section belong to?' %>
+        <%= f.select(:topic_id) do %>
+            <% Topic.all.each do |t| %>
+                <%= content_tag(:option, t.title, value: t.id ) %>
+            <% end %>
+        <% end %>
         <div class="field">
             <h5>Title</h5>
             <%= f.text_field :title %><br>
             <%= f.cktext_area :body %>
             <br>
-            <%= f.label :mailer, "Include Mailer?" %>
-            <%= f.check_box :mailer %><br>
-            <%= f.label :alert, "(Optional)Pop-Up Reminder" %>
-            <%= f.text_field :alert %>
         </div>
         <div id="sub-sections">
             <br><br>
             <%= f.fields_for :sub_sections do |s| %>
-                <%= render 'sub_section_fields', f: s %>
+                <%= link_to_add_association 'Add Sub-Section', f, :sub_sections %>
             <% end %>
-            <div class="add-associations">
-                <%= link_to_add_association 'Add Sub-Section', f, :sub_sections, partial: 'sub_section_fields' %>
-            </div>
-        </div>
-        <div id="links">
-            <%= f.fields_for :links do |l| %>
-                <% render 'link_fields', f: l %>
-            <% end %>
-            <br>
-            <div class="add-associations">
-                <%= link_to_add_association 'Add Links to other sections', f, :links %>
-            </div>
         </div>
         <%= f.submit "Submit", :class => "btn-submit" %>
     <% end %>

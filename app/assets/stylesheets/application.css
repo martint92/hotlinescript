@@ -22,7 +22,7 @@ a {
     text-decoration: none;
     background-color: rgb(230, 71, 64);
     color: rgb(255, 255, 255);
-    font-size: 32px;
+    font-size: 24px;
 }
 .nav-item:hover {
     background-color: rgb(200, 71, 64)
@@ -359,4 +359,20 @@ li {
 }
 #new-email {
     margin-top: 2em;
+}
+/* Instructions Page */
+#instructions h1 {
+    margin: 12px;
+}
+#instructions p {
+    padding: 16px;
+}
+/* Tracking */
+#tracking {
+    text-align: center;
+}
+/* TOPICS */
+.section-menu {
+    margin-left: 8px;
+    font-size: 14px;
 }

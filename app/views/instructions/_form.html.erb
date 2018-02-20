@@ -1,0 +1,6 @@
+<%= form_for @instruction do |f| %>
+    <%= f.label :header, "Header" %>
+    <%= f.text_field :header %> <br /><br />
+    <%= f.cktext_area :body %>
+    <%= f.submit "Submit", class: "btn-submit" %>
+<% end %>
