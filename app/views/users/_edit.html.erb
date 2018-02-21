@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, remote: true) do |f| %>
 <table class="profile-table">
         <tr>
             <td class="profile-td">First Name: </td>
@@ -46,4 +46,16 @@
     </table>
     <%= f.submit "Save Changes", :class => "btns" %>
     <br /><br />
+<% end %>
+
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+  <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
 <% end %>
