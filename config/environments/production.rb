@@ -71,7 +71,7 @@ Rails.application.configure do
     :user_name            => ENV['EMAIL_USERNAME'],
     :password             => ENV['EMAIL_PASSWORD'],
     :authentication       => :login,
-    :domain               => 'houstonimmigration.org'
+    :domain               => 'houstonimmigration.org',
     :enable_starttls_auto => true
   }
 

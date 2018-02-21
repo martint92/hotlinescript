@@ -7,8 +7,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :password_digest
       t.string :role
       t.string :activation_digest 
-      t.boolean :activation 
-      t.datetime :activation_at
       t.uuid :css_id
       t.timestamps
     end
