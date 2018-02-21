@@ -14,6 +14,11 @@ class GuestsController < ApplicationController
         ScriptResourcesMailer.custom_email(@guest).deliver_now 
     end 
 
+    def test_email
+        ScriptResourcesMailer.test_email(User.find(1)).deliver_now
+        redirect_to '/'
+    end
+
     private 
         def guest_params
             params.require(:guest).permit(:email, :subject, :content)

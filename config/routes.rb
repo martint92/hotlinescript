@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
+  get '/test-email' => 'guests@test_email'
+
   resources :sections, :users, :emails, :guests, :instructions, :topics 
   resources :sessions, only: [:new, :create, :destroy]
   resources :acount_activations, only: [:edit]

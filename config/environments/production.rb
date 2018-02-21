@@ -64,7 +64,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.delivery_method = :smtp
-  # SMTP settings for gmail
+  # SMTP settings for Office365
   config.action_mailer.smtp_settings = {
     :address              => "smtp.office365.com",
     :port                 => '587',
