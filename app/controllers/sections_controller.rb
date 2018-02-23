@@ -42,7 +42,7 @@ class SectionsController < ApplicationController
     else 
       flash[:notice] = "Error: Save Failed"
     end 
-    @selected ||= Section.last
+    @selected ||= Topic.last
     respond_to(:js)
   end 
 

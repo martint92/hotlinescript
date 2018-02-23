@@ -40,6 +40,8 @@ gem 'jquery-ui-rails'
 gem 'rails_sortable'
 #Cocoon for nested forms
 gem 'cocoon'
+#MAILGUN
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

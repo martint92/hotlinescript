@@ -1,2 +1,3 @@
 $('#topics-sidebar').html("<%= j (render 'sidebar') %>");
 $('#topics-area').html("<%= j (render partial: 'area', locals: { topic: @selected } )%>");
+$('#topic-errors').html("<%= j (render partial: 'errors', locals: { topic: @topic } ) %>");

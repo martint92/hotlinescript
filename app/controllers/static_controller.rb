@@ -1,23 +1,23 @@
 class StaticController < ApplicationController
-    def maintenance
-    end
+  def maintenance
+  end
 
-    def permission_error
-        respond_to do |format|
-            format.js
-            format.html
-        end 
-    end
-
-    def tracking
+  def permission_error
+    respond_to do |format|
+      format.js
+      format.html   
     end 
+  end
 
-    def help
-    end 
+  def tracking
+  end 
 
-    def referrals
-    end 
+  def help
+  end 
 
-    def home
-    end
+  def referrals
+  end 
+
+  def home
+  end
 end

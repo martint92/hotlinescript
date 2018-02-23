@@ -1,5 +1,4 @@
 class InstructionsController < ApplicationController
-
     before_action :require_admin, only: [:new, :create, :edit, :update]
 
     def index

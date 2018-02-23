@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219164108) do
+ActiveRecord::Schema.define(version: 20180221193544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 20180219164108) do
     t.index ["topic_id"], name: "index_sections_on_topic_id"
   end
 
+  create_table "sessions", id: :serial, force: :cascade do |t|
+    t.string "session_id", null: false
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
   create_table "sub_sections", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -95,8 +104,6 @@ ActiveRecord::Schema.define(version: 20180219164108) do
     t.string "password_digest"
     t.string "role"
     t.string "activation_digest"
-    t.boolean "activation"
-    t.datetime "activation_at"
     t.uuid "css_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

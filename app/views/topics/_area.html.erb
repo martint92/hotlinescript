@@ -1,4 +1,3 @@
-<%= link_to '[new]', new_section_path, :remote => true, :class => 'edit-button' if can_edit? && Topic.all.any?%>
 <% if topic.try(:title).blank? %>
     <br>
     <h1>There's Nothing Here!</h1>
@@ -6,14 +5,16 @@
     <p>If you're not en editor or admin, you cannot create any posts. Please ask them to create content for you.</p>
 <% else %>
     <h1><%= topic.title %></h1>
+    <div id="line-across"></div>
+    <%= link_to '[new section]', new_section_path, :remote => true, :class => 'edit-button' if can_edit? && Topic.all.any?%>
     <% if topic.try(:sections) %>
-        <% topic.sections.each do |section| %>
-            <div id="<%=section.css_id%>">
-                <% if can_edit? %>
-                <%= link_to '[delete]', section_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-button" %>
-                <%= link_to '[edit]', edit_section_path(section), remote: true, :class => "edit-button" %>
-                <% end %>
+        <% topic.sections.order(:priority).each do |section| %>
+            <div class="topics-sections">
                 <h2><%= section.title %></h2>
+                <% if can_edit? %>
+                <%= link_to '[edit]', edit_section_path(section), remote: true, :class => "edit-buttons" %>
+                <%= link_to ' [delete]', section_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-buttons" %>
+                <% end %>
                 <%= section.body.html_safe %>
                 <% if section.sub_sections %>
                     <% section.sub_sections.each do |ss| %>

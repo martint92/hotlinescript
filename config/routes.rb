@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'instructions#index'
 
-  %w( 404 406 422 500 503 ).each do |code|
+  %w( 400 404 406 422 500 503 ).each do |code|
     get code, :to => "errors#show", :code => code 
   end 
 
@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
+  #OFFICE 365 API
   get '/test-email' => 'guests#test_email'
+  get '/authorize' => 'auth#gettoken'
 
   resources :sections, :users, :emails, :guests, :instructions, :topics 
   resources :sessions, only: [:new, :create, :destroy]
