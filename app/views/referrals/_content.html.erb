@@ -1,0 +1,10 @@
+<% if @referral.nil? %>
+    <p>
+        There doesn't seem to be anything here. Why don't you add something?
+    </p>
+    <%= link_to '[new]', new_referral_path, remote: true, class: 'edit-buttons' %>
+<% else %>
+    <h1><%= @referral.title %></h1><%= link_to '[edit]', edit_referral_path(@referral), remote: true, class: 'edit-buttons' %>
+    <p><%= @referral.body.html_safe %></p>
+<% end %>
+<%= @a_value %>

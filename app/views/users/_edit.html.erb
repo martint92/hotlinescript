@@ -39,10 +39,12 @@
                 <td><p>Error 500: Internal Error.</p></td>
             </tr>
         <% end %>
-        <tr>
-            <td class="profile-td">Password: </td>
-            <td class="profile-td"><%= f.password_field :password %></td>
-        </tr>
+        <% if @user == current_user %>
+            <tr>
+                <td class="profile-td">Password: </td>
+                <td class="profile-td"><%= f.password_field :password %></td>
+            </tr>
+        <% end %>
     </table>
     <%= f.submit "Save Changes", :class => "btns" %>
     <br /><br />

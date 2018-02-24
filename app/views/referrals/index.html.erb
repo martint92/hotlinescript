@@ -1,0 +1,26 @@
+<div id="reminder">
+    <%= render 'reminder' %>
+</div>
+<div id="categories">
+    <%= link_to 'Immigration Referral', fetch_category_path(:option => 'Immigration Referral'), remote: true, class: 'category-links' %> - 
+    <%= link_to 'Other Referral', fetch_category_path(option: 'Other Referral'), remote: true, class: 'category-links' %> - 
+    <%= link_to 'Social Services', fetch_category_path(option: 'Social Services'), remote: true, class: 'category-links' %>
+</div>
+
+<div id="referral-area">
+    <div id="referral-titles">
+        <%= render 'titles' %>
+    </div>
+    <div id="referral-content">
+        <%= render 'content' %>
+    </div>
+    <div id="referral-side-buttons">
+        <%= render 'side_buttons' %>
+    </div>
+</div>
+
+
+
+ 
+
+ 

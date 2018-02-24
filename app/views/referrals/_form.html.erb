@@ -1,0 +1,8 @@
+<%= form_for(@referral, remote: true) do |f| %>
+    <%= f.label :category, "Select a Category:" %>
+    <%= f.select(:category, ['Immigration Referral', 'Other Referral', 'Social Services', ], {},{:class => "referral-selector"} ) %> <br />
+    <%= f.label :title, "Title: " %>
+    <%= f.text_field :title %><br /><br/>
+    <%= f.cktext_area :body %>
+    <%= f.submit 'Submit', class: "btn-submit" %>
+<% end %> 

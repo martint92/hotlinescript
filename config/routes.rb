@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get '/error' => 'static#permission_error'
   get '/help' => 'static#help'
   get '/tracking' => 'static#tracking'
-  get '/referrals' => 'static#referrals'
 
   #USER PAGES
   get '/user/list' => "users#index"
@@ -34,16 +33,18 @@ Rails.application.routes.draw do
 
   #OFFICE 365 API
   get '/test-email' => 'guests#test_email'
-  get '/authorize' => 'auth#gettoken'
 
-  resources :sections, :users, :emails, :guests, :instructions, :topics 
+  #REFERRAL PAGES
+  get '/referrals' => 'referrals#index'
+  get '/fetch_category' => 'referrals#fetch_category', as: 'fetch_category'
+  get '/fetch_content' => 'referrals#fetch_content', as: 'fetch_content'
+
+  resources :sections, :users, :emails, :guests, :instructions, :topics, :referrals, :reminders
   resources :sessions, only: [:new, :create, :destroy]
   resources :acount_activations, only: [:edit]
   resources :hotlinks, only: [:new, :create, :destroy]
 end
 
 ## TO DO
-
-## REFERALS IS BASED ON THE SAME MODEL AS HOTLINE (INDEPENDENT FILES) << :require_editor 
 ## MOVE MAILER OPTION TO SIDE BAR << CREATE POPUP << :require_user << templates edit require_editor, edit email require_user 
 

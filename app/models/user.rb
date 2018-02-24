@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    attr_accessor :activation_token 
+    attr_accessor :activation_token
  
     before_create :set_defaults, :assign_css_id, :create_activation_digest
     before_save :email_downcase
@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
     validates :first_name, presence: true 
     validates :last_name, presence: true 
-    validates :password, presence: true, length: { minimum: 6 }
+    validates :password, presence: true, length: { minimum: 6 }, on: :create 
 
     
     has_secure_password

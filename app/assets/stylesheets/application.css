@@ -331,10 +331,10 @@ li {
 }
 .edit-button {
     text-decoration: none;
-    color: blue;
+    color: rgb(45, 112, 197)
 }
 .edit-button a:visited {
-    color: blue;
+    color: rgb(45, 112, 197)
 }
 /* mailer model and controller */
 #emails-index {
@@ -393,7 +393,7 @@ li {
     top: 25%;
     right: 0;
     display: inline-block;
-    border:1px solid blue;
+    border:1px solid rgb(45, 112, 197);
     padding: 5px;
     width: 18%;
 }
@@ -429,7 +429,86 @@ li {
 .section-form {
     padding: 1em;
 }
-
+#instructions {
+    padding: 2em;
+}
+#instructions h1 {
+    text-align: center;
+}
+#instructions p {
+    padding: 0 4em;
+    line-height: 1.25em;
+}
+#topics-sidebar ul li {
+    list-style: circle;
+}
+/* Referrals */
+#reminder {
+    text-align: center;
+    font-size: larger;
+    padding: 1em;
+    border: 1px solid grey;
+    background-color: lightgrey;
+}
+.reminder-form {
+    height: 40px;
+    width: 100%;
+    font-size: x-large;
+}
+.reminder-submit {
+    display: block;
+}
+#categories {
+    font-size: xx-large;
+    text-align: center;
+    padding: 1em;
+}
+#referral-area {
+    display: table;
+}
+#referral-titles {
+    display: table-cell;
+    width: 15%;
+    border: 1px solid grey;
+    padding: 0.5em;
+    background-color: lightgrey;
+}
+#referral-content {
+    display: table-cell;
+    width: 70%;
+    padding: 1.5em;
+}
+#referral-content h1 {
+    display: inline;
+    margin: 0 1em 2em 0;
+}
+#referral-content p {
+    margin-top: 1em;
+}
+#referral-side-buttons {
+    display: table-cell;
+    width: 15%;
+}
+.referral-selector {
+    font-size: 12px;
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    color: #555;
+    font-size: inherit;
+    margin: 20px 0 20px 20px;
+    overflow: hidden;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 300px;
+}
 
 
 

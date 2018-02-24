@@ -1,0 +1,4 @@
+<%= form_for(@reminder, remote: true) do |f| %>
+    <%= f.text_area :body, class: "reminder-form" %>
+    <%= f.submit "Submit", class: "reminder-submit" %>
+<% end %>

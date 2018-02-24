@@ -11,13 +11,4 @@ class StaticController < ApplicationController
 
   def tracking
   end 
-
-  def help
-  end 
-
-  def referrals
-  end 
-
-  def home
-  end
 end

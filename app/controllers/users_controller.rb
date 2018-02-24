@@ -30,6 +30,11 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        if @user.errors.any?
+            @user.errors.full_message.each do |msg|
+                puts msg 
+            end 
+        end 
         if @user.save
             session[:user_id] = @user.id 
             redirect_to '/'
@@ -49,10 +54,10 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @user.role ||= 'volunteer'
         if current_user && current_user.admin?
-            @user.update_attributes(user_params_admin)
+            @user.update_attributes!(user_params_admin)
             @users = User.all 
             render 'index'
-        elsif @user.update_attributes(user_params)
+        elsif @user.update_attributes!(user_params)
             @users = User.all
             render 'index'
         else
@@ -61,9 +66,8 @@ class UsersController < ApplicationController
     end
 
     def destroy 
-        User.find(params[:id]).destroy
-        flash[:notice] = "User Deleated"
-        render 'index'
+        @user = User.find(params[:id]).destroy
+        redirect_to 'index'
     end
 
     private
