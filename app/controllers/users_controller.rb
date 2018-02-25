@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     #before_action :require_editor, only: [:new]
-    before_action :require_user, only: [:index, :show]
+    before_action :require_user, only: [:index, :show, :edit]
 
     def index
         @users = User.order(role: :asc)
@@ -56,12 +56,12 @@ class UsersController < ApplicationController
         if current_user && current_user.admin?
             @user.update_attributes!(user_params_admin)
             @users = User.all 
-            render 'index'
+            redirect_to user_path(@user)
         elsif @user.update_attributes!(user_params)
             @users = User.all
-            render 'index'
+            redirect_to user_path(@user)
         else
-            render 'edit'
+            render edit_user_path(@user)
         end
     end
 

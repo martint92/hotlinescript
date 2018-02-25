@@ -1,7 +1,9 @@
 <%= link_to '[new topic]', new_topic_path, class: "edit-buttons", remote: true  if can_edit? %>
-<script>
-    $('.sortable').railsSortable();
-</script>
+<% if can_edit? %>
+    <script>
+        $('.sortable').railsSortable();
+    </script>
+<% end %>
 <div id="new-topic"></div>
 <% if @topics.all.any? %>
     <ul class="sortable">

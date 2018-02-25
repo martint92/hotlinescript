@@ -1,19 +1,21 @@
-<script>
-    $('.sortable').railsSortable();
-</script>
+<% if can_edit? %>
+    <script>
+        $('.sortable').railsSortable();
+    </script>
+<% end %>
 <% if @referrals.nil? || @referrals.any? == false %>
     <p>
         There is nothing here yet. Why don't you add something? 
     </p>
-    <%= link_to '[new]', new_referral_path, remote: true, class: 'edit-buttons' %>
+    <%= link_to '[new]', new_referral_path, remote: true, class: 'edit-buttons' if can_edit? %>
 <% else %>
-    <%= link_to '[new]', new_referral_path, remote: true, class: 'edit-buttons' %>
+    <%= link_to '[new]', new_referral_path, remote: true, class: 'edit-buttons' if can_edit? %>
     <h3><%= @referrals.first.category %></h3>
     <ul class="sortable">
         <% @referrals.each do |referral| %>
             <li id="<%= referral.sortable_id %>">
                 <%= link_to referral.title, fetch_content_path(:follow_id => referral.id), remote: true %>
-                <%= link_to '[x]', referral, remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone."} %>
+                <%= link_to '[x]', referral, remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone."} if can_edit? %>
             </li>
         <% end %>
     </ul>
