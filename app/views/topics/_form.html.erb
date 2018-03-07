@@ -1,7 +1,6 @@
 <script>
     $('.cancel').on('click', function(){
         $('#new-topic').empty();
-        $('#<%= @topic.css_id %>').html("<%= j (render partial: 'each_topic', locals: { topic: @topic}) %>");
     });
 </script>
 

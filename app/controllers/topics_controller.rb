@@ -42,6 +42,7 @@ class TopicsController < ApplicationController
 
     def destroy
         @topic = Topic.find(params[:id]).destroy 
+        @topics = Topic.order(:priority).all 
         redirect_to '/hotline' 
     end 
 

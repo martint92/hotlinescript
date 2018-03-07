@@ -1,6 +1,6 @@
 <div id="<%= topic.css_id %>" style="display:inline-block;">
     <li id="<%= topic.sortable_id %>">
-        <%= link_to topic.title, from_nav_path(:topic_id => topic.id), remote: true %>
+        <%= link_to topic.title, from_nav_path(topic), remote: true %>
         <%= link_to '[edit]', edit_topic_path(topic), remote: true, :class => "edit-buttons" if can_edit? %>
         <%= link_to '[x]', topic_path(topic), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone, and it will delete all Sections, Sub_Sections and Micro_Sections under it" }, :class => "edit-buttons" if can_edit?%>
     </li>
