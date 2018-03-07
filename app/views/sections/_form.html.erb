@@ -12,8 +12,14 @@
             <%= f.cktext_area :body %>
             <br>
         </div>
+        <% if @section.sub_sections.any? %>
+            <%= f.fields_for :sub_sections do |s| %>
+                <%= render 'sub_section_fields', f: s %>
+            <% end %>
+        <% end %>
         <div id="sub-sections">
             <br><br>
+            <% f.object.sub_sections.build %>
             <%= f.fields_for :sub_sections do |s| %>
                 <%= link_to_add_association 'Add Sub-Section', f, :sub_sections %>
             <% end %>

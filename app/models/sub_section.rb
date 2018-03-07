@@ -3,6 +3,7 @@ class SubSection < ApplicationRecord
   set_sortable :priority, without_updating_timestamps: true 
   
   belongs_to :section
+  validates :title, :body, presence: true 
 
   # Section Association
   has_many :micro_sections, dependent: :destroy, inverse_of: :sub_section

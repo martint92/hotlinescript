@@ -11,16 +11,18 @@ a {
 
 .logo {
     float: left;
-    padding: 8px;
     margin-left: 50px;
 }
 .logo:hover {
     background-color: rgb(200, 71, 64)
 }
+.nav-item-div {
+    display: inline-block;
+}
 .nav-item {
-    padding: 8px;
+    display: inline-block;
+    padding: 1px 8px;
     text-decoration: none;
-    background-color: rgb(230, 71, 64);
     color: rgb(255, 255, 255);
     font-size: 24px;
 }
@@ -28,16 +30,21 @@ a {
     background-color: rgb(200, 71, 64)
 }
 .login {
-    margin: 20px 8px 0 0;
+    margin: 10px 8px 0 0;
     float: right;
 }
 nav {
-    margin: 1.25em 1em;
+    margin: 0.8em;
     display:inline-block;
 }
 header {
     background-color: rgb(230, 71, 64);
-    min-height: 80px;
+}
+.active-nav {
+    background-color: rgb(210, 71, 64);
+}
+.active-nav + .nav-item {
+    text-decoration: underline;
 }
 
 /* Body and Main Items */
@@ -139,10 +146,6 @@ main {
 }
 #script-area .edit-button:hover {
     background-color: grey;
-}
-li {
-    margin: 0 0 0 20px;
-    list-style: none;
 }
 #sidebar-menu h4 {
     margin: auto;
@@ -388,6 +391,17 @@ li {
 #topics-area {
     height: 100%;
 }
+.new-topic-form {
+    display: inline-block;
+}
+.cancel {
+    padding: 3.75px;
+    display: inline-block;
+}
+#new-topic {
+    display: block;
+    padding: 4px;
+}
 #topics-hotlinks {
     position: fixed;
     top: 25%;
@@ -441,6 +455,9 @@ li {
 }
 #topics-sidebar ul li {
     list-style: circle;
+}
+.micro-section {
+    margin-left: 20px;
 }
 /* Referrals */
 #reminder {

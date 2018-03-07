@@ -1,0 +1,28 @@
+<%= link_to '[new topic]', new_topic_path, class: "edit-buttons", remote: true  if can_edit? %>
+<% if can_edit? %>
+    <script>
+        $('.sortable').railsSortable();
+    </script>
+<% end %>
+<div id="new-topic"></div>
+<% if @topics.all.any? %>
+    <ul class="sortable">
+        <% @topics.each do |topic| %>
+            <li id="<%= topic.sortable_id %>">
+                <%= link_to topic.title, from_nav_path(:topic_id => topic.id), remote: true %>
+                <%= link_to '[edit]', edit_topic_path(topic), remote: true, :class => "edit-buttons" if can_edit? %>
+                <%= link_to '[x]', topic_path(topic), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone, and it will delete all Sections, Sub_Sections and Micro_Sections under it" }, :class => "edit-buttons" if can_edit?%>
+            </li>
+            <% if topic.try(:sections) %>
+                <ul class="sortable section-menu">
+                    <% topic.sections.order(:priority).all.each do |section|%>
+                        <li id="<%= section.sortable_id%>"><%= section.title %></li>
+                    <% end %>
+                </ul>
+            <% end %>
+        <% end %>
+    </ul>
+<% else %>
+    <h3>No Topics Yet</h3>
+<% end %>
+<div id="topic-errors"></div>

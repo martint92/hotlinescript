@@ -11,10 +11,10 @@
     <header>
       <%= link_to image_tag("logo_hilsc.png"), "/", :class => "logo" %>
       <nav>
-        <%= link_to 'Instructions', '/', :class => "nav-item" %>
-        <%= link_to 'Tracking', '/tracking', class: "nav-item" %>
-        <%= link_to 'Hotline', '/topics', :class => "nav-item" %>
-        <%= link_to 'Referrals', "/referrals", :class => "nav-item" %>
+        <div class="nav-item-div <%= 'active-nav' if current_page?('/')%>"><%= link_to 'Instructions', '/', :class => "nav-item" %></div>
+        <div class="nav-item-div <%= 'active-nav' if current_page?('/topics')%>"><%= link_to 'Script', '/topics', :class => "nav-item" %></div>
+        <div class="nav-item-div <%= 'active-nav' if current_page?('/referrals')%>"><%= link_to 'Referrals', "/referrals", :class => "nav-item" %></div>
+        <div class="nav-item-div <%= 'active-nav' if current_page?('/tracking')%>"><%= link_to 'Tracking', '/tracking', class: "nav-item" %></div>
       </nav>
       <div class="login">
         <% if current_user %>

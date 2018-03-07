@@ -1,4 +1,5 @@
 class SectionsController < ApplicationController
+  include SectionsHelper
   
   before_action :require_editor, only: [:new, :create, :edit, :update, :destroy]
   before_action :require_user
@@ -29,7 +30,6 @@ class SectionsController < ApplicationController
   def new
     @sections = Section.all 
     @section = Section.new 
-    @section.sub_sections.build 
     respond_to do |format|
       format.js 
     end
@@ -37,25 +37,23 @@ class SectionsController < ApplicationController
 
   def create
     @section = Section.create(section_params)
-    if @section.save!
-      flash[:success] = "Saved Successfully"
-    else 
-      flash[:notice] = "Error: Save Failed"
-    end 
-    @selected ||= Topic.last
+    @selected = Topic.last
+    @topics = Topic.order(:priority).all 
     respond_to(:js)
   end 
 
   def edit
     @section = Section.find(params[:id])
+    @section.sub_sections.build unless @section.sub_sections.any?
     respond_to :js 
   end
 
   def update 
+    @selected = Topic.last 
     begin
       @section = Section.find(params[:id])
     rescue 
-      @section = Section.where(:id => params[:section_id]).first
+      @section = Section.find(params[:section_id])
     end
     @section.update_attributes(section_params)
     respond_to :js, :html
@@ -70,7 +68,7 @@ class SectionsController < ApplicationController
   private 
     def section_params
       params.require(:section).permit(:title, :body, :topic_id,
-      sub_sections_attributes: [:id, :title, :body, :_destroy], 
-      links_attributes: [:id, :option, :_destroy])
+      sub_sections_attributes: [:id, :title, :body, :_destroy,
+      micro_sections_attributes: [:id, :title, :body, :_destroy]])
     end 
 end

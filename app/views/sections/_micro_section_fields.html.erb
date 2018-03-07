@@ -1,0 +1,10 @@
+<div class="nested-fields micro-section">
+    <div class="field">
+        <h5>Micro-Section Title</h5>
+        <%= f.text_field :title %><br>
+    </div>
+    <div class="field">
+        <%= f.cktext_area :body %>
+    </div><br>
+    <%= link_to_remove_association "Remove Micro-Section", f %><br>
+</div>
