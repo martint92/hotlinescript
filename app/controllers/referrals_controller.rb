@@ -51,6 +51,6 @@ class ReferralsController < ApplicationController
         def referral_params
             params.require(:referral).permit(
                 :category, :title, :body,
-                :ref_subs_attributes: [:id, :title, :body, :_destroy])
+                ref_subs_attributes: [:id, :title, :body, :_destroy])
         end 
 end
