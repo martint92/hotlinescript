@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180223225757) do
+ActiveRecord::Schema.define(version: 20180307181754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 20180223225757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sub_section_id"], name: "index_micro_sections_on_sub_section_id"
+  end
+
+  create_table "ref_subs", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "priority"
+    t.bigint "referral_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["referral_id"], name: "index_ref_subs_on_referral_id"
   end
 
   create_table "referrals", force: :cascade do |t|
@@ -126,6 +136,7 @@ ActiveRecord::Schema.define(version: 20180223225757) do
   end
 
   add_foreign_key "micro_sections", "sub_sections"
+  add_foreign_key "ref_subs", "referrals"
   add_foreign_key "sections", "topics"
   add_foreign_key "sub_sections", "sections"
 end

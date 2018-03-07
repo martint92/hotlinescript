@@ -6,7 +6,20 @@
     <div class="field">
         <%= f.cktext_area :body %>
     </div>
-    
+<% 
+=begin 
+%>
+    <% if ss.micro_sections %>
+        <% ss.micro_sections.each do |ms| %>
+            <div id="<%= ms.css_id %>">
+                <%= ms.title %>
+                <%= ms.body.html_safe %>
+            </div>
+        <% end %>
+    <% end %>
+<%
+=end 
+%>
     <br>
     <%= link_to_remove_association "Remove Sub-Section", f %><br>
 </div>
