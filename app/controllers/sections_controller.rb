@@ -60,8 +60,9 @@ class SectionsController < ApplicationController
   end 
 
   def destroy 
+    @topics = Topic.order(:priority).all 
+    @selected ||= Topic.first 
     @section = Section.find(params[:id]).destroy 
-    @selected = Topic.first 
     respond_to(:js)
   end 
 

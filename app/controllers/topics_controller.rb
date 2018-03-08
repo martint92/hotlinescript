@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
     end 
 
     def from_nav
-        @selected = Topic.find_by id: params[:topic_id]
+        @selected = Topic.find(params[:id])
         respond_to(:js)
     end 
 
@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
     def destroy
         @topic = Topic.find(params[:id]).destroy 
         @topics = Topic.order(:priority).all 
-        redirect_to '/hotline' 
+        respond_to(:js)
     end 
 
     private 

@@ -8,7 +8,7 @@
 <% if @topics.all.any? %>
     <ul class="sortable">
         <% @topics.each do |topic| %>
-            <%= render partial: 'each_topic', locals: { topic: topic} %>
+            <%= render partial: 'topics/each_topic', locals: { topic: topic} %>
         <% end %>
     </ul>
 <% else %>

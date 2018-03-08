@@ -6,20 +6,18 @@
     <div class="field">
         <%= f.cktext_area :body %>
     </div>
-<% 
-=begin 
-%>
-    <% if ss.micro_sections %>
-        <% ss.micro_sections.each do |ms| %>
-            <div id="<%= ms.css_id %>">
-                <%= ms.title %>
-                <%= ms.body.html_safe %>
-            </div>
+    <% if f.object.micro_sections.any? %>
+        <%= f.fields_for :micro_sections do |ms| %>
+            <%= render 'micro_sections_fields', f: ms %>
         <% end %>
     <% end %>
-<%
-=end 
-%>
+    <div id="micro-sections">
+        <br /><br />
+        <% f.object.micro_sections.build %>
+        <%= f.fields_for :micro_sections do |ms| %>
+            <%= link_to_add_association 'Add Micro-Section', f, :micro_sections %>
+        <% end %>
+    </div>
     <br>
     <%= link_to_remove_association "Remove Sub-Section", f %><br>
 </div>

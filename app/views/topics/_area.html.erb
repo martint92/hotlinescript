@@ -28,9 +28,15 @@
                                 <%= ss.body.html_safe %>
                                 <% if ss.micro_sections %>
                                     <% ss.micro_sections.each do |ms| %>
-                                        <div id="<%= ms.css_id %>">
-                                            <%= ms.title %>
-                                            <%= ms.body.html_safe %>
+                                        <div class="qaa-box" id="<%= ms.css_id %>">
+                                            <h4 class="qaa-title">
+                                                <%= image_tag 'plus.png', :size => '14x14', :class => "plus-img" %> 
+                                                <%= image_tag 'minus.png', :size => '14x14', :class => "minus-img" %>
+                                                <%= ms.title %>
+                                            </h4>
+                                            <div class="answers-box">
+                                                <%= ms.body.html_safe %>
+                                            </div>
                                         </div>
                                     <% end %>
                                 <% end %>

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   #TOPIC PAGES
   get '/hotline' => 'topics#index'
-  get '/from_nav' => 'topics#from_nav', as: 'from_nav'
+  get '/from_nav/:id' => 'topics#from_nav', as: 'from_nav'
 
   #STATIC PAGES
   get '/maintenance' => 'static#maintenance'
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get '/fetch_category' => 'referrals#fetch_category', as: 'fetch_category'
   get '/fetch_content' => 'referrals#fetch_content', as: 'fetch_content'
 
-  resources :sections, :users, :emails, :guests, :instructions, :topics, :referrals, :reminders
+  resources :sections, :users, :emails, :guests, :instructions, :referrals, :reminders, :topics 
   resources :sessions, only: [:new, :create, :destroy]
   resources :acount_activations, only: [:edit]
   resources :hotlinks, only: [:new, :create, :destroy]
