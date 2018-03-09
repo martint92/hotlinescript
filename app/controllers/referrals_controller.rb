@@ -4,14 +4,14 @@ class ReferralsController < ApplicationController
     before_action :require_user 
 
     def index
-        @referrals = Referral.all
-        @referral = Referral.first 
+        @referrals = Referral.where(category: "Immigration Legal")
+        @referral = Referral.order(:priority).first  
         @reminder = Reminder.first 
         respond_to(:js, :html)
     end 
 
     def fetch_category
-        @referrals = Referral.where(category: params[:option])
+        @referrals = Referral.where(category: params[:option]).order(:priority)
         @referral = @referrals.first 
         respond_to :js 
     end 

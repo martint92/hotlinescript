@@ -454,10 +454,30 @@ main {
     line-height: 1.25em;
 }
 #topics-sidebar ul li {
-    list-style: circle;
+    list-style: disc;
 }
 .micro-section {
     margin-left: 20px;
+}
+.topic-selector {
+    font-size: 12px;
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    color: #555;
+    font-size: inherit;
+    margin: 20px 0;
+    overflow: hidden;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 300px;
 }
 /* Referrals */
 #reminder {
@@ -476,9 +496,9 @@ main {
     display: block;
 }
 #categories {
-    font-size: xx-large;
+    font-size: larger;
     text-align: center;
-    padding: 1em;
+    padding: 0 1em;
 }
 #referral-area {
     display: table;
@@ -487,7 +507,7 @@ main {
     display: table-cell;
     width: 15%;
     border: 1px solid grey;
-    padding: 0.5em;
+    padding: 0 0.5em;
     background-color: lightgrey;
 }
 #referral-content {
@@ -526,7 +546,33 @@ main {
     white-space: nowrap;
     width: 300px;
 }
+.topic-links-div {
+    padding: 0.25em;
+}
+.topic-link {
+    font-size: large;
+    color: black; 
+    text-decoration: none;
+    font-weight: bold;
+}
+.topic-link:hover {
+    border-radius: 5px;
+    background-color: lightgrey;
+}
+.topic-active {
+    text-decoration: underline;
 
-
-
+}
+.topic-section-link {
+    color: black;
+    text-decoration: none;
+}
+.last-edit {
+    font-size: smaller;
+    font-style: italic;
+}
+#ref-title {
+    text-align: center;
+    padding: 15px;
+}
 

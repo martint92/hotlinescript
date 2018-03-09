@@ -1,7 +1,9 @@
 <div class="section-form">
     <%= form_for(@section, remote: true) do |f| %>
-        <%= f.label :topic_id, 'What topic does this section belong to?' %>
-        <%= f.select(:topic_id) do %>
+    <br><br><br>
+        <h4>What topic does this section belong to?</h4>
+        <%= f.select(:topic_id, {}, {}, {:class => "topic-selector"} ) do %>
+            <%= content_tag(:option, lt["title"], value: lt["id"]) %>
             <% Topic.all.each do |t| %>
                 <%= content_tag(:option, t.title, value: t.id ) %>
             <% end %>
@@ -19,7 +21,7 @@
         <% end %>
         <div id="sub-sections">
             <br><br>
-            <% f.object.sub_sections.build %>
+            <% f.object.sub_sections.build unless f.object.sub_sections %>
             <%= f.fields_for :sub_sections do |s| %>
                 <%= link_to_add_association 'Add Sub-Section', f, :sub_sections %>
             <% end %>

@@ -1,2 +1,4 @@
 $('#referral-titles').html("<%= j (render 'titles' ) %>");
 $('#referral-content').html("<%= j (render 'content' ) %>");
+$('#ref-title').empty();
+$('#ref-title').html("<%= j (params[:option]) %>")

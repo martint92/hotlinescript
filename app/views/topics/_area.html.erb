@@ -10,11 +10,13 @@
     <% if topic.try(:sections) %>
         <% topic.sections.order(:priority).each do |section| %>
             <div class="topics-sections">
-                <h2><%= section.title %></h2>
+                <h2 id="<%= section.css_id %>"><%= section.title %></h2>
                 <% if can_edit? %>
                 <%= link_to '[edit]', edit_section_path(section), remote: true, :class => "edit-buttons" %>
                 <%= link_to ' [delete]', section_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-buttons" %>
                 <% end %>
+                <p class="last-edit"> <%= show_editors(section) %></p>
+                <br />
                 <%= section.body.html_safe %>
                 <% if section.sub_sections %>
                     <% section.sub_sections.each do |ss| %>

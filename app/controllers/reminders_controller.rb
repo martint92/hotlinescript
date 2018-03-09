@@ -18,7 +18,7 @@ class RemindersController < ApplicationController
     end 
 
     def update 
-        @reminder = Reminder.find(parmas[:id])
+        @reminder = Reminder.find(params[:id])
         @reminder.update_attributes(reminder_params)
         respond_to :js 
     end 

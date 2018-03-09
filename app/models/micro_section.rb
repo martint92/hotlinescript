@@ -1,5 +1,6 @@
 class MicroSection < ApplicationRecord
     include RailsSortable::Model 
+    audited
     set_sortable :priority, without_updating_timestamps: true 
     
     belongs_to :sub_section

@@ -1,5 +1,6 @@
 class Referral < ApplicationRecord
     include RailsSortable::Model 
+    audited
     set_sortable :priority, without_updating_timestamps: true 
 
     validates :title, presence: true 

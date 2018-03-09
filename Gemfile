@@ -42,6 +42,7 @@ gem 'rails_sortable'
 gem 'cocoon'
 #MAILGUN
 gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
+gem "audited", "~> 4.6"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     attr_accessor :activation_token
- 
+    audited
     before_create :set_defaults, :assign_css_id, :create_activation_digest
     before_save :email_downcase
 

@@ -6,4 +6,10 @@
 <% else %>
     <h1><%= @referral.title %></h1><%= link_to '[edit]', edit_referral_path(@referral), remote: true, class: 'edit-buttons' if can_edit? %>
     <p><%= @referral.body.html_safe %></p>
+    <% if @referral.try(:ref_subs) %>
+        <% @referral.ref_subs.each do |ref| %>
+            <h3><%= ref.title %></h3>
+            <%= ref.body.html_safe %>
+        <% end %>
+    <% end %>
 <% end %>

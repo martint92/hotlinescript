@@ -1,3 +1,17 @@
+<% @topics.each do |topic| %>
+    <script>
+        $('.section-menu').hide();
+        $('#<%= j (topic.css_id) %>').on('click', function() {
+            $('.topic-li-active').slideToggle();
+            $('.topic-li-active').removeClass('topic-li-active');
+            $('.topic-link').removeClass('topic-active');
+            $(this).addClass('topic-active');
+            $(this).next().next().next().slideToggle();
+            $(this).next().next().next().addClass('topic-li-active');
+        });
+    </script>
+<% end %>
+
 <%= link_to '[new topic]', new_topic_path, class: "edit-buttons", remote: true  if can_edit? %>
 <% if can_edit? %>
     <script>
@@ -6,11 +20,11 @@
 <% end %>
 <div id="new-topic"></div>
 <% if @topics.all.any? %>
-    <ul class="sortable">
+    <div class="sortable">
         <% @topics.each do |topic| %>
-            <%= render partial: 'topics/each_topic', locals: { topic: topic} %>
+            <%= render partial: 'topics/each_topic', locals: { topic: topic } %>
         <% end %>
-    </ul>
+    </div>
 <% else %>
     <h3>No Topics Yet</h3>
 <% end %>

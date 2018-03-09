@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+    include TopicsHelper 
 
     before_action :require_editor, only: [:new, :create, :edit, :update, :destroy]
     before_action :require_user 
@@ -8,11 +9,13 @@ class TopicsController < ApplicationController
         @selected ||= Topic.first 
         @hotlinks = Hotlink.all 
         respond_to(:js, :html)
+        session[:last_topic] = @selected
     end 
 
     def from_nav
         @selected = Topic.find(params[:id])
         respond_to(:js)
+        session[:last_topic] = @selected
     end 
 
     def new 
@@ -25,6 +28,7 @@ class TopicsController < ApplicationController
         @selected = Topic.last
         @topics = Topic.order(:priority).all 
         respond_to(:js)
+        session[:last_topic] = @selected
     end 
 
     def edit 
@@ -38,6 +42,7 @@ class TopicsController < ApplicationController
         @selected = @topic 
         @topics = Topic.order(:priority).all 
         respond_to(:js)
+        session[:last_topic] = @selected
     end 
 
     def destroy

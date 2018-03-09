@@ -37,7 +37,7 @@ class SectionsController < ApplicationController
 
   def create
     @section = Section.create(section_params)
-    @selected = Topic.last
+    @selected = Topic.take
     @topics = Topic.order(:priority).all 
     respond_to(:js)
   end 
@@ -49,7 +49,7 @@ class SectionsController < ApplicationController
   end
 
   def update 
-    @selected = Topic.last 
+    @selected = Topic.take
     begin
       @section = Section.find(params[:id])
     rescue 
