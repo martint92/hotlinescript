@@ -1,11 +1,20 @@
 <div id="<%= topic.sortable_id %>" class="topic-links-div">
+<%
+=begin
+%>
     <%= link_to topic.title, from_nav_path(topic), remote: true, class: "topic-link", id: topic.css_id %>
+<%
+=end 
+%>
+    <p class="topic-link" id="<%= topic.css_id %>"><%= topic.title%></p>
     <%= link_to '[edit]', edit_topic_path(topic), remote: true, :class => "edit-buttons" if can_edit? %>
     <%= link_to '[x]', topic_path(topic), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone, and it will delete all Sections, Sub_Sections and Micro_Sections under it" }, :class => "edit-buttons" if can_edit?%>
     <% if topic.try(:sections) %>
     <ul class="sortable section-menu <%= topic.css_id %>">
         <% topic.sections.order(:priority).all.each do |section|%>
-        <li id="<%= section.sortable_id%>"><%= link_to section.title, "##{section.css_id}", class: 'topic-section-link' %></li>
+        <li id="<%= section.sortable_id%>">
+            <%= link_to section.title, from_nav_path(topic, section: section.css_id), remote: true, class: 'topic-section-link' %>
+        </li>
         <% end %>
     </ul>
 <% end %>

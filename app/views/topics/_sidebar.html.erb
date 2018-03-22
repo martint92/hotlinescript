@@ -2,12 +2,7 @@
     <script>
         $('.section-menu').hide();
         $('#<%= j (topic.css_id) %>').on('click', function() {
-            $('.topic-li-active').slideToggle();
-            $('.topic-li-active').removeClass('topic-li-active');
-            $('.topic-link').removeClass('topic-active');
-            $(this).addClass('topic-active');
             $(this).next().next().next().slideToggle();
-            $(this).next().next().next().addClass('topic-li-active');
         });
     </script>
 <% end %>

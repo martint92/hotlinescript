@@ -1,3 +1,13 @@
+<script>
+    $('.qaa-title').on('click', function() {
+        $(this).next().slideToggle(400);
+        $(this).find('img').toggle();
+        })
+    $(".answers-box").hide(); 
+    if ("<%= j (@anchor) %>") {
+        location.hash = "#<%= j (@anchor)%>";
+    }
+</script>
 <% if topic.try(:title).blank? %>
     <br>
     <h1>There's Nothing Here!</h1>
