@@ -48,7 +48,8 @@ Rails.application.routes.draw do
   get '/fetch_category' => 'referrals#fetch_category', as: 'fetch_category'
   get '/fetch_content' => 'referrals#fetch_content', as: 'fetch_content'
 
-  resources :sections, :users, :emails, :guests, :instructions, :referrals, :reminders, :topics 
+  resources :sections, :users, :guests, :instructions, :referrals, :reminders, :topics 
+  resources :emails, only: [:new, :create, :edit, :update, :destroy, :index, :show]
   resources :sessions, only: [:new, :create, :destroy]
   resources :hotlinks, only: [:new, :create, :destroy]
 end
