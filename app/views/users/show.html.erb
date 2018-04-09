@@ -15,10 +15,10 @@
         <% else %>
             <%= link_to 'Edit Instruction(Home Page) Template', '/instructions/new', class: "btns" %>
         <% end %>
+        <div id="invite">
+            <%= link_to 'Invite New User', invite_user_path, remote: true, class: "btns" %>
+        </div>
     <% elsif can_edit? %>
         <%= link_to 'Edit Email Templates', '/emails', :class => "btns" %>
-    <% else %>
     <% end %>
-
-    
 </div>

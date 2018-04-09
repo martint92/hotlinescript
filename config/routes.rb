@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   get '/hotline' => 'topics#index'
   get '/from_nav/:id' => 'topics#from_nav', as: 'from_nav'
 
+  # Hotlinks 
+  get '/emails/open_email/' => 'emails#open_email', as: 'open_email'
+  post '/emails' => 'emails#send_email', as: "send_email"
+
   #STATIC PAGES
   get '/maintenance' => 'static#maintenance'
   get '/error' => 'static#permission_error'
@@ -26,6 +30,11 @@ Rails.application.routes.draw do
   #USER PAGES
   get '/user/list' => "users#index"
   get '/edit_permissions' => "users#edit_permissions", as: 'edit_permissions'
+  get '/user/invite' => "users#invite_user", as: 'invite_user'
+  post '/user/send_invite' => 'users#send_invite', as: 'send_invite'
+
+  get '/account_activations/:activation_token/edit' => "account_activations#edit", as: 'edit_account_activations'
+  post '/account_activations/' => 'account_activations#update'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -41,7 +50,6 @@ Rails.application.routes.draw do
 
   resources :sections, :users, :emails, :guests, :instructions, :referrals, :reminders, :topics 
   resources :sessions, only: [:new, :create, :destroy]
-  resources :acount_activations, only: [:edit]
   resources :hotlinks, only: [:new, :create, :destroy]
 end
 

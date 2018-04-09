@@ -1,0 +1,4 @@
+<%= form_for(@user, {remote: true, url: send_invite_path}) do |f| %>
+    <%= f.email_field :email, placeholder: "Email@Example.com" %>
+    <%= f.submit "Send Invite" %>
+<% end %>

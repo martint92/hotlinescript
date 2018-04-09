@@ -36,8 +36,22 @@ class EmailsController < ApplicationController
     @email = Email.find(params[:id]).destroy 
   end 
 
+  def open_email
+    render layout: 'send_mail'
+  end 
+
+  def send_email
+    render :close_window
+    @guest = Guest.create(guest_params)
+    ScriptResourcesMailer.guest_email(@guest).deliver_now
+  end 
+
   private 
     def email_params
       params.require(:email).permit(:subject, :content)
+    end 
+
+    def guest_params
+      params.require(:guest).permit(:email, :subject, :content)
     end 
 end

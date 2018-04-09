@@ -1,16 +1,11 @@
 class UsersController < ApplicationController
-
-    #before_action :require_editor, only: [:new]
-    before_action :require_user, only: [:index, :show, :edit]
+    before_action :require_editor, only: [:invite_user, :send_invite]
+    before_action :require_user
 
     def index
+        #ScriptResourcesMailer.test_email.deliver_now
         @users = User.order(role: :asc)
     end
-
-    def invite 
-        @user = User.new 
-        respond_to :js 
-    end 
 
     def show
         begin
@@ -24,24 +19,18 @@ class UsersController < ApplicationController
         end 
     end
 
-    def new
-        @user = User.new
-    end
+    def invite_user
+        @user = User.new 
+        respond_to :js 
+    end 
 
-    def create
-        @user = User.new(user_params)
-        if @user.errors.any?
-            @user.errors.full_message.each do |msg|
-                puts msg 
-            end 
-        end 
-        if @user.save
-            session[:user_id] = @user.id 
-            redirect_to '/'
-        else
-            redirect_to 'signup'
-        end
-    end
+    def send_invite
+        respond_to :js
+        @user = User.new(invite_params)
+        @user.save(validate: false)
+        UserMailer.invite_email(@user).deliver_now
+    end 
+
 
     def edit
         @user = User.find(params[:id])
@@ -52,7 +41,6 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        @user.role ||= 'volunteer'
         if current_user && current_user.admin?
             @user.update_attributes!(user_params_admin)
             @users = User.all 
@@ -67,16 +55,19 @@ class UsersController < ApplicationController
 
     def destroy 
         @user = User.find(params[:id]).destroy
-        redirect_to 'index'
+        redirect_to :index
     end
 
     private
-    def user_params_admin
-        params.require(:user).permit(:first_name, :last_name, :email, :password, :role)
-    end
-    def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password)
-    end
+        def user_params_admin
+            params.require(:user).permit(:first_name, :last_name, :email, :password, :role)
+        end
 
+        def user_params
+            params.require(:user).permit(:first_name, :last_name, :email, :password)
+        end
 
+        def invite_params
+            params.require(:user).permit(:email)
+        end
 end

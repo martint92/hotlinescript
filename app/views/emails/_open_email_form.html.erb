@@ -1,0 +1,9 @@
+<% @guest = Guest.new %>
+<%= form_for(@guest, url: send_email_path) do |f| %>
+    <p>To: </p>
+    <%= f.email_field :email %>
+    <p>Subject: </p>
+    <%= f.text_field :subject, value: Email.first.subject%>
+    <%= f.submit 'Send' %>
+    <%= f.cktext_area :content, value: Email.first.content %>
+<% end %>

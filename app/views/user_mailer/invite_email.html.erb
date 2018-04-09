@@ -1,0 +1,9 @@
+<p>Welcome! </p>
+
+<br>
+<p>You have been invited to join the Houston Immigration Legal Services Collaborative Hotline team!</p>
+<p>Please <%= link_to 'Click Here', edit_account_activations_url(@user.activation_token, email: @user.email) %> or follow the link below to create your account</p>
+<%= edit_account_activations_url(@user.activation_token, email: @user.email) %>
+
+<p> Closing talking about things and stuff </p>
+<p> Legal disclosure </p>

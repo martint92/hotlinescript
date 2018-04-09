@@ -1,0 +1,11 @@
+<%= link_to 'Invite New User', invite_user_path, remote: true, class: 'btns' %>
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+        <p><%= pluralize(@user.errors.count, "error") %> prohibited this invite from being sent:</p>
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>

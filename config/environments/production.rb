@@ -61,22 +61,19 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "hotline_#{Rails.env}"
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
 
-  config.action_mailer.delivery_method = :smtp
-  # SMTP settings for MailGun
+  # SMTP settings for Gmail
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.mailgun.org",
+    :address              => "smtp.gmail.com",
     :port                 => '587',
-    :user_name            => ENV['MAILGUN_USERNAME'],
-    :password             => ENV['MAILGUN_PASSWORD'],
+    :user_name            =>  ENV['GMAIL_USERNAME'],
+    :password             => ENV['GMAIL_PASSWORD'],
     :authentication       => 'plain',
-    :domain               => ENV['MAILGUN_DOMAIN'],
+    :domain               => ENV['GMAIL_DOMAIN'],
     :enable_starttls_auto => true
   }
-
-  
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
