@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   get '/from_nav/:id' => 'topics#from_nav', as: 'from_nav'
 
   # GUEST PAGES 
-  get '/emails/open_email/' => 'guests#open_email', as: 'open_email'
-  post '/emails' => 'guests#send_email', as: "send_email"
+  get '/guests/open_email/' => 'guests#open_email', as: 'open_email'
+  post '/guests' => 'guests#send_email', as: "send_email"
 
   #STATIC PAGES
   get '/maintenance' => 'static#maintenance'
