@@ -40,9 +40,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  #OFFICE 365 API
-  get '/test-email' => 'guests#test_email'
-
   #REFERRAL PAGES
   get '/referrals' => 'referrals#index'
   get '/fetch_category' => 'referrals#fetch_category', as: 'fetch_category'
