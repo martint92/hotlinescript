@@ -1,23 +1,15 @@
 class GuestsController < ApplicationController
     after_action :clean_guests
 
-    def new
-        @guest = Guest.new 
-        respond_to(:html, :js)
+    def open_email
+        render layout: 'send_mail'
     end 
 
-    def create
-        respond_to(:js)
-        @guest = Guest.create!(guest_params)
-        @guest.content = Email.where(params[:subject => @guest.subject]).first
-        @guest.save 
-        ScriptResourcesMailer.custom_email(@guest).deliver_now 
+    def send_email
+        render :close_window
+        @guest = Guest.create(guest_params)
+        ScriptResourcesMailer.guest_email(@guest).deliver_now
     end 
-
-    def test_email
-        ScriptResourcesMailer.test_email(User.find(1)).deliver_now
-        redirect_to '/'
-    end
 
     private 
         def guest_params

@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   get '/hotline' => 'topics#index'
   get '/from_nav/:id' => 'topics#from_nav', as: 'from_nav'
 
-  # Hotlinks 
-  get '/emails/open_email/' => 'emails#open_email', as: 'open_email'
-  post '/emails' => 'emails#send_email', as: "send_email"
+  # GUEST PAGES 
+  get '/emails/open_email/' => 'guests#open_email', as: 'open_email'
+  post '/emails' => 'guests#send_email', as: "send_email"
 
   #STATIC PAGES
   get '/maintenance' => 'static#maintenance'
