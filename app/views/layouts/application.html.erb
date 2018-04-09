@@ -9,11 +9,11 @@
 
   <body>
     <header>
-      <%= link_to image_tag("logo_hilsc.png"), "/", :class => "logo" %>
+      <%= link_to image_tag("logo_hilsc.png"), root_path, :class => "logo" %>
       <nav>
-        <div class="nav-item-div <%= 'active-nav' if current_page?('/')%>"><%= link_to 'Instructions', '/', :class => "nav-item" %></div>
-        <div class="nav-item-div <%= 'active-nav' if current_page?('/topics')%>"><%= link_to 'Script', '/topics', :class => "nav-item" %></div>
-        <div class="nav-item-div <%= 'active-nav' if current_page?('/referrals')%>"><%= link_to 'Referrals', "/referrals", :class => "nav-item" %></div>
+        <div class="nav-item-div <%= 'active-nav' if current_page?('/instructions')%>"><%= link_to 'Instructions', instructions_path, :class => "nav-item" %></div>
+        <div class="nav-item-div <%= 'active-nav' if current_page?('/topics')%>"><%= link_to 'Script', topics_path, :class => "nav-item" %></div>
+        <div class="nav-item-div <%= 'active-nav' if current_page?('/referrals')%>"><%= link_to 'Referrals', referrals_path, :class => "nav-item" %></div>
         <div class="nav-item-div <%= 'active-nav' if current_page?('/tracking')%>"><%= link_to 'Tracking', '/tracking', class: "nav-item" %></div>
       </nav>
       <div class="login">

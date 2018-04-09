@@ -1,4 +1,5 @@
 class EmailsController < ApplicationController
+  before_action :require_user 
 
   def index 
     @emails = Email.all 

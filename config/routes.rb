@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  root 'instructions#index'
+  root 'static#home'
 
   %w( 400 404 406 422 500 503 ).each do |code|
     get code, :to => "errors#show", :code => code 
   end 
-
+  
   #SECTIONS PAGES
   get '/sections/list' => "sections#index", as: 'sections_index'
   get 'sections/:id/edit' => 'sections#edit', as: @section

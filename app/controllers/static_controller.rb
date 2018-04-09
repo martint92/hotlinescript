@@ -1,4 +1,5 @@
 class StaticController < ApplicationController
+  before_action :require_user, only: [:tracking]
   def maintenance
   end
 
