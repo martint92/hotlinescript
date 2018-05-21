@@ -1,7 +1,9 @@
 <div class="nested-fields">
-    <div class="field">
-        <h5>Sub-Section Title</h5>
-        <%= f.text_field :title %><br>
+    <div class="field input-group mt-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Sub-Section Title</span>
+        </div>
+        <%= f.text_field :title, class: 'form-control' %>
     </div>
     <div class="field">
         <%= f.cktext_area :body %>

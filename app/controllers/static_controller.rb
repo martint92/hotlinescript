@@ -12,4 +12,10 @@ class StaticController < ApplicationController
 
   def tracking
   end 
+
+  def tos
+  end
+
+  def pp
+  end 
 end

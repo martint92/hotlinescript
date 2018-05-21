@@ -1,31 +1,38 @@
-<div class="section-form">
-    <%= form_for(@section, remote: true) do |f| %>
-    <br><br><br>
-        <h4>What topic does this section belong to?</h4>
-        <%= f.select(:topic_id, {}, {}, {:class => "topic-selector"} ) do %>
-            <%= content_tag(:option, lt["title"], value: lt["id"]) %>
-            <% Topic.all.each do |t| %>
-                <%= content_tag(:option, t.title, value: t.id ) %>
+<div class="container">
+    <div class="card">
+        <%= form_for(@section, remote: true) do |f| %>
+            <div class="field input-group mt-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Topic</span>
+                </div>
+                <%= f.select(:topic_id, {}, {}, {class: ""} ) do %>
+                    <%= content_tag(:option, lt["title"], value: lt["id"]) %>
+                    <% Topic.all.each do |t| %>
+                        <%= content_tag(:option, t.title, value: t.id ) %>
+                    <% end %>
+                <% end %>
+            </div>
+            <div class="field input-group mt-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Title</span>
+                </div>
+                <%= f.text_field :title, class: 'form-control' %>
+            </div>
+            <div class='field'>
+                <%= f.cktext_area :body %>
+            </div>
+            <% if @section.sub_sections.any? %>
+                <%= f.fields_for :sub_sections do |s| %>
+                    <%= render 'sub_section_fields', f: s %>
+                <% end %>
             <% end %>
+            <div id="sub-sections">
+                <% f.object.sub_sections.build unless f.object.sub_sections %>
+                <%= f.fields_for :sub_sections do |s| %>
+                    <%= link_to_add_association 'Add Sub-Section', f, :sub_sections %>
+                <% end %>
+            </div>
+            <%= f.submit "Submit", :class => "btn btn-primary my-6" %>
         <% end %>
-        <div class="field">
-            <h5>Title</h5>
-            <%= f.text_field :title %><br>
-            <%= f.cktext_area :body %>
-            <br>
-        </div>
-        <% if @section.sub_sections.any? %>
-            <%= f.fields_for :sub_sections do |s| %>
-                <%= render 'sub_section_fields', f: s %>
-            <% end %>
-        <% end %>
-        <div id="sub-sections">
-            <br><br>
-            <% f.object.sub_sections.build unless f.object.sub_sections %>
-            <%= f.fields_for :sub_sections do |s| %>
-                <%= link_to_add_association 'Add Sub-Section', f, :sub_sections %>
-            <% end %>
-        </div>
-        <%= f.submit "Submit", :class => "btn-submit" %>
-    <% end %>
+    </div>
 </div>

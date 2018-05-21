@@ -16,6 +16,8 @@
 //= require rails_sortable
 //= require turbolinks
 //= require cocoon
+//= require popper
+//= require bootstrap-sprockets
 //= require ckeditor/init
 //= require_tree .
 

@@ -1,12 +1,13 @@
-<div id="topics-page">
-    <div id="topics-sidebar">
-        <%= render 'sidebar' %>
-    </div>
-    <div id="border-down"></div>
-    <div id="topics-area">
-        <%= render partial: 'area', locals: { topic: @selected } %>
-    </div>
-    <div id="topics-hotlinks">
-        <%= render partial: 'hotlinks', locals: {hotlinks: @hotlinks} %>
+<div class ="container-fluid" id="topics-page">
+    <div class="row">
+        <div class="col-2" id="topics-sidebar">
+            <%= render 'sidebar' %>
+        </div>
+        <div class="col-8" id="topics-area">
+            <%= render partial: 'area', locals: { topic: @selected } %>
+        </div>
+        <div class="col-2" id="topics-hotlinks">
+            <%= render partial: 'hotlinks', locals: {hotlinks: @hotlinks} %>
+        </div>
     </div>
 </div>

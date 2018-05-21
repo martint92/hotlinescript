@@ -1,24 +1,35 @@
-<br>
-<h1 class="profile-title">Profile</h1>
-<div id="profile">
-    <%= render 'profile' %>
-</div>
-<div id="profile-edit"></div>
-<div class="link-btns">
-    <%= link_to "Edit Profile", edit_user_path(@user), :class => "btns", remote: true if @user == current_user || can_edit? %>
-    <%= link_to "Delete Profile", @user, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "btns" if @user == current_user || is_admin?  %>
-    <%= link_to 'See All Users', '/user/list', :class => "btns"%>
-    <% if is_admin? %>
-        <%= link_to 'Edit Email Templates', '/emails', :class => "btns" %>
-        <% if Instruction.all.any? %>
-            <%= link_to 'Edit Instruction(Home Page) Template', edit_instruction_path(Instruction.first), class: "btns" %>
-        <% else %>
-            <%= link_to 'Edit Instruction(Home Page) Template', '/instructions/new', class: "btns" %>
-        <% end %>
-        <div id="invite">
-            <%= link_to 'Invite New User', invite_user_path, remote: true, class: "btns" %>
+<div class="card container">
+<h1 class="card-title"><%= @user.first_name%> <%= @user.last_name %></h1>
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-borderless">
+                <tr>
+                    <td>First Name: </td>
+                    <td><%=@user.first_name %></td>
+                </tr>
+                <tr>
+                    <td>Last Name: </td>
+                    <td><%= @user.last_name %></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><%= @user.email %></td>
+                </tr>
+                <tr>
+                    <td>Permissions: </td>
+                    <td><%= @user.role.capitalize %></td>
+                </tr>
+            </table>
         </div>
-    <% elsif can_edit? %>
-        <%= link_to 'Edit Email Templates', '/emails', :class => "btns" %>
-    <% end %>
+        <div class='col-6'>
+            <%= link_to edit_user_path(@user) do %>
+                <button type="button" class="btn btn-primary">Edit Profile</button>
+            <% end %>
+            <% if @user == current_user || is_admin? %>
+                <%= link_to @user, method: :delete, data: { confirm: "Are you sure? This cannot be undone." } do %>
+                    <button type="button" class="btn btn-primary">Delete Profile</button>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
 </div>

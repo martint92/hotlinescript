@@ -1,8 +1,16 @@
-<div class="signup-box">    
-    <h1>Log in</h1>
-    <%= form_for(:session, url: login_path) do |f| %>
-        <%= f.email_field :email, :placeholder => "Email", :class => "signup-box-element" %>
-        <%= f.password_field :password,  :placeholder => "Password", :class => "signup-box-element" %>
-        <%= f.submit "Log In", class: "btn-submit" %>
-    <% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-2 col-sm-3"></div>
+        <div class="col-8 col-sm-6 card">
+            <div class="card-body">
+                <h2 class="card-title">Login</h2>
+                <%= form_for(:session, url: login_path) do |f| %>
+                    <%= f.email_field :email, placeholder: "Email", class: "form-control mb-2" %>
+                    <%= f.password_field :password, placeholder: "Password", class: "form-control mb-2" %>
+                    <%= f.submit "Log In", class: "btn btn-primary mb-2 d-flex-inline"%>
+                <% end %>
+            </div>
+        </div>
+        <div class="col-2 col-sm-3"></div>
+    </div>
 </div>

@@ -1,58 +1,49 @@
-<script>
-    $('.qaa-title').on('click', function() {
-        $(this).next().slideToggle(400);
-        $(this).find('img').toggle();
-        })
-    $(".answers-box").hide(); 
-    if ("<%= j (@anchor) %>") {
-        location.hash = "#<%= j (@anchor)%>";
-    }
-</script>
 <% if topic.try(:title).blank? %>
-    <br>
     <h1>There's Nothing Here!</h1>
     <p>Either you're editing the title of this page, or nothing has been posted here!</p>
     <p>If you're not en editor or admin, you cannot create any posts. Please ask them to create content for you.</p>
 <% else %>
-    <h1><%= topic.title %></h1>
-    <div id="line-across"></div>
-    <%= link_to '[new section]', new_section_path, :remote => true, :class => 'edit-button' if can_edit? && Topic.all.any?%>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-6"><%= topic.title %></h1>
+            <p class="col-2"><%= link_to '[new section]', new_section_path, remote: true if can_edit? && Topic.all.any?%></p>
+        </div>
+    </div>
     <% if topic.try(:sections) %>
         <% topic.sections.order(:priority).each do |section| %>
-            <div class="topics-sections">
-                <h2 id="<%= section.css_id %>"><%= section.title %></h2>
-                <% if can_edit? %>
-                <%= link_to '[edit]', edit_section_path(section), remote: true, :class => "edit-buttons" %>
-                <%= link_to ' [delete]', section_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "edit-buttons" %>
-                <% end %>
-                <p class="last-edit"> <%= show_editors(section) %></p>
-                <br />
-                <%= section.body.html_safe %>
+            <div class="container card">
+                <div class="card-header">
+                    <div class="row">
+                        <h3 class="card-title col-5" id="<%= section.css_id %>"><%= section.title %></h3>
+                        <span class="font-italic col-4"><%= show_editors(section) %></span>
+                        <% if can_edit? %>
+                            <div class="col-3">
+                                <%= link_to '[edit]', edit_section_path(section), remote: true, :class => "align-self-end" %>
+                                <%= link_to ' [delete]', section_path(section), remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, :class => "align-self-end" %>
+                            </div>
+                        <% else %>
+                            <div class="col-3"></div>
+                        <% end %>
+                    </div>
+                </div>
+                <p class="card-text"><%= section.body.html_safe %></p>
                 <% if section.sub_sections %>
                     <% section.sub_sections.each do |ss| %>
-                        <div class="qaa-box" id="<%= ss.css_id %>">
-                            <h4 class="qaa-title">
-                                <%= image_tag 'plus.png', :size => '14x14', :class => "plus-img" %> 
-                                <%= image_tag 'minus.png', :size => '14x14', :class => "minus-img" %>
-                                <%= ss.title %>
-                            </h4>
-                            <div class="answers-box">
+                        <div class="card" id="<%= ss.css_id %>">
+                            <h4 class="card-title font-italic card-header"><%= ss.title %></h4>
+                            <p class="card-text">
                                 <%= ss.body.html_safe %>
-                                <% if ss.micro_sections %>
-                                    <% ss.micro_sections.each do |ms| %>
-                                        <div class="qaa-box" id="<%= ms.css_id %>">
-                                            <h4 class="qaa-title">
-                                                <%= image_tag 'plus.png', :size => '14x14', :class => "plus-img" %> 
-                                                <%= image_tag 'minus.png', :size => '14x14', :class => "minus-img" %>
-                                                <%= ms.title %>
-                                            </h4>
-                                            <div class="answers-box">
-                                                <%= ms.body.html_safe %>
-                                            </div>
-                                        </div>
-                                    <% end %>
+                            </p>
+                            <% if ss.micro_sections %>
+                                <% ss.micro_sections.each do |ms| %>
+                                    <div class="card" id="<%= ms.css_id %>">
+                                        <h4 class="card-title font-italic card-header"><%= ms.title %></h4>
+                                        <p class="card-text">
+                                            <%= ms.body.html_safe %>
+                                        </p>
+                                    </div>
                                 <% end %>
-                            </div>
+                            <% end %>
                         </div>
                     <% end %>
                 <% end %>

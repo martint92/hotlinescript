@@ -1,14 +1,6 @@
-<script>
-    $('.cancel').on('click', function(){
-        $('#new-topic').empty();
-    });
-</script>
-
-<div class="new-topic-form">
-    <%= form_for(@topic, remote: true) do |f| %>
-    <%= f.text_field :title, placeholder: "Topic" %>
-    <%= f.submit "Submit" %>
+<%= form_for(@topic, remote: true) do |f| %>
+<%= f.text_field :title, placeholder: "Topic" %>
+<div class="row">
+    <%= f.submit "Submit", class: 'btn btn-primary btn-sm mx-3 mt-1' %>
     <% end %>
 </div>
-
-<button class="cancel">Cancel</button>

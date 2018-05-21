@@ -1,8 +1,16 @@
 <%= form_for(@referral, remote: true) do |f| %>
-    <%= f.label :category, "Select a Category:" %>
-    <%= f.select(:category, ['Immigration Legal', 'Other Legal', 'Social Services', 'Advocacy' ], {},{:class => "referral-selector"} ) %> <br />
-    <%= f.label :title, "Title: " %>
-    <%= f.text_field :title %><br /><br/>
+    <div class="input-group my-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Select a Category</span>
+        </div>
+        <%= f.select(:category, ['Immigration Legal', 'Other Legal', 'Social Services', 'Advocacy' ], {},{:class => "form-control"} ) %>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Title: </span>
+        </div>
+        <%= f.text_field :title, class: 'form-control' %>
+    </div>
     <%= f.cktext_area :body %>
     <% if @referral.ref_subs.any? %>
         <%= f.fields_for :ref_subs do |r| %>
@@ -16,5 +24,5 @@
             <%= link_to_add_association 'Add Referral Subsection', f, :ref_subs %>
         <% end %>
     </div>
-    <%= f.submit 'Submit', class: "btn-submit" %>
+    <%= f.submit 'Submit', class: "btn btn-primary my-4" %>
 <% end %> 

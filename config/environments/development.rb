@@ -25,7 +25,7 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-
+  config.action_mailer.default_url_options = { host: 'http://http://www.houimmihotline.org/'}
   config.action_mailer.raise_delivery_errors = false
 
 

@@ -1,24 +1,49 @@
-<h4>Hotlinks</h4>
-<div class="hotlink-area">
-    <% if can_edit? %>
-        <%= link_to "[new]", new_hotlink_path, remote: true, :class => "sidebar-links" %>
-    <% end %>
-    <% if hotlinks.nil? %>
-        <p>Currently there are no hotlinks</p>
-    <% else %>
-            <% hotlinks.each do |link| %>
-                <p>
-                    <%= link_to link.title, link.url, :class => "sidebar-links"%>
-                    <%= link_to '[X]', link, remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone."}, :class => "sidebar-links" if current_user && current_user.editor? %>
-                </p>
-            <% end %>
-    <% end %>
+<% if can_edit? %>
+<div class="row">
+    <h4>Hotlinks</h4>
+    <button type="button" class="btn btn-primary btn-sm mx-3" data-toggle="modal" data-target="#newHotlinkModal">New</button>
 </div>
+<% else %>
+    <h4>Hotlinks</h4>
+<% end %>
+<% if hotlinks.nil? %>
+    <p>Currently there are no hotlinks</p>
+<% else %>
+        <% hotlinks.each do |link| %>
+            <p>
+                <%= link_to link.title, "https://#{link.title}", :class => "sidebar-links"%>
+                <%= link_to '[X]', link, remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone."}, :class => "sidebar-links" if current_user && current_user.editor? %>
+            </p>
+        <% end %>
+<% end %>
 <p>----</p>
 <div id="send-email">
-    <button type="button" onclick="window.open('<%= j (open_email_url) %>', '_blank', 'location=yes,height=650,width=520,scrollbars=no,status=no');">
+    <button type="button" class="btn btn-primary my-4" onclick="window.open('<%= j (open_email_url) %>', '_blank', 'location=yes,height=650,width=520,scrollbars=no,status=no');">
         Send Email
     </button>
-    <button type="button">Send Text Button To Come</button>
 </div>
 <div id="new-hotlink"></div>
+
+<div class="modal" id="newHotlinkModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newHotlinkModal">New Hotlink</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for(:hotlink, url: '/hotlinks') do |f| %>
+            <%= f.text_field :title, placeholder: "Link", class: "form-control mb-2" %>
+        <div class="row">
+                <%= f.submit "Create", class: "btn btn-primary m-2"%>
+            <% end %>
+            <button type="button" class="btn btn-primary m-2" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  

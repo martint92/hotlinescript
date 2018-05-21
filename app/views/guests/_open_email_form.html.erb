@@ -1,9 +1,22 @@
 <% @guest = Guest.new %>
 <%= form_for(@guest, url: send_email_path) do |f| %>
-    <p>To: </p>
-    <%= f.email_field :email %>
-    <p>Subject: </p>
-    <%= f.text_field :subject, value: Email.first.subject%>
-    <%= f.submit 'Send' %>
+    <div class="field input-group mt-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text">To: </span>
+        </div>
+        <%= f.email_field :email, class: 'form-control' %>
+    </div>
+     <div class="field input-group mt-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Subject: </span>
+        </div>
+        <%= f.text_field :subject, value: Email.first.subject, class: 'form-control'%>
+    </div>   
     <%= f.cktext_area :content, value: Email.first.content %>
+    <div class="row mt-2">
+        <div class='col-10'></div>
+        <div class='col-2'>
+            <%= f.submit 'Send', class: 'btn btn-primary' %>
+        </div>
+    </div>
 <% end %>

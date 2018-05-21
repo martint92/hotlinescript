@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     def invite_user
         @user = User.new 
-        respond_to :js 
+        respond_to :js, :html
     end 
 
     def send_invite
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
     def destroy 
         @user = User.find(params[:id]).destroy
-        redirect_to :index
+        redirect_to '/user/list'
     end
 
     private

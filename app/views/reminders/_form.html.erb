@@ -1,4 +1,11 @@
-<%= form_for(@reminder, remote: true) do |f| %>
-    <%= f.text_area :body, class: "reminder-form" %>
-    <%= f.submit "Submit", class: "reminder-submit" %>
-<% end %>
+<div class='container-fluid'>
+    <div class='form-group row'>
+    <%= form_for(@reminder, remote: true) do |f| %>
+        <div class='col-8'>
+            <%= f.text_area :body, class: "form-control-lg", style: "min-width: 800px;"%>
+        </div>
+        <div class='col-4'>
+            <%= f.submit "Save Changes", class: "btn btn-primary" %>
+        </div>
+    <% end %>
+</div>

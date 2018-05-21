@@ -1,21 +1,26 @@
-<div id="emails-index">
+<div class='container' id="emails-index">
     <h1>Custom Emails</h1>
     <p>Here are all the email templates that may be used.</p><br>
-    <%= link_to "New Email Template", new_email_path %>
+    <%= link_to "Create New Email Template", new_email_path, class: 'btn btn-primary' %>
     <br><br>
     <% if @emails.nil? || @emails.blank? || @emails.empty? %>
         <p>There are no emails, why don't you add one?</p>
     <% else %>
-        <table>
-            <tr>
-                <th>View Edit</th>
-                <th>Delete</th>
-            </tr>
+        <table class='table'>
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>View/Edit</th>
+                    <th>Delete</th>
+                </tr>
+            <% number = 1 %>
             <% @emails.each do |email| %>
                 <tr>
+                    <td><%= number %>
                     <td><%= link_to email.subject, email_path(email) %> </td>
                     <td><%= link_to "[x]", email_path(email), remote: true, method: :delete, data: { confirm: "Are you sure?"} %> </td>
                 </tr>
+                <% number += 1 %>
             <% end %>
         </table>
     <% end %>

@@ -1,18 +1,22 @@
-<br>
-<h1 class="user-list-title">List of All Users</h1>
+<div class='container card'>
+    <h1>List of All Users</h1>
 
-<table class="user-list">
-    <tr class="user-list-table-row">
-        <th class="user-list-table">Name</th>
-        <th class="user-list-table">Email</th>
-        <th class="user-list-table">Permissions</th>
-    </tr>
-    <% @users.each do |u| %>
-        <tr class="user-list-table-row">
-            <td class="user-list-table"><%= link_to "#{u.first_name} #{u.last_name}", u, :class => "linkage"%></td>
-            <td class="user-list-table"><%= u.email %></td>
-            <td class="user-list-table"><%= u.role.capitalize %></td>
-            <td class="user-list-table"><%= link_to 'Details', user_path(u), :class => "btns" %></td>                    
-        </tr>
-    <% end %>
-</table>
+    <table class="table table-striped">
+        <thead class='thead-light'>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Permissions</th>
+                <th></th>
+            </tr>
+        </thead>
+        <% @users.each do |u| %>
+            <tr scope="row">
+                <td><%= link_to "#{u.first_name} #{u.last_name}", u, :class => "linkage"%></td>
+                <td><%= u.email %></td>
+                <td><%= u.role.capitalize %></td>
+                <td><%= link_to 'Details', user_path(u), :class => "btns" %></td>                    
+            </tr>
+        <% end %>
+    </table>
+</div>

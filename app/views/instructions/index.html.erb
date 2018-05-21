@@ -1,11 +1,23 @@
 <% if Instruction.all.any? %>
-    <div id="instructions">
-        <h1><%= @instruction.header.html_safe %></h1>
-        <p><%= @instruction.body.html_safe %></p>
+    <div class="container">
+        <div class="row">
+            <div class="card my-4">
+                <div class="card-body">
+                    <h1 class="card-title"><%= @instruction.header.html_safe %></h1>
+                    <p class="card-text"><%= @instruction.body.html_safe %></p>
+                </div>
+            </div>
+        </div>
     </div>
 <% else %>
-    <div id="instructions">
-        <h1>Nothing's Here!</h1>
-        <p>The instructions page has not yet been added. Please contact an Admin to have them update or create it! </p>
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h1>Nothing's Here!</h1>
+                <p>The instructions page has not yet been added. Please contact an Admin to have them update or create it! </p>
+            </div>
+            <div class="col-2"></div>
+        </div>
     </div>
 <% end %>

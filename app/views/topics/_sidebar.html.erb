@@ -1,19 +1,15 @@
-<% @topics.each do |topic| %>
-    <script>
-        $('.section-menu').hide();
-        $('#<%= j (topic.css_id) %>').on('click', function() {
-            $(this).next().next().next().slideToggle();
-        });
-    </script>
-<% end %>
-
-<%= link_to '[new topic]', new_topic_path, class: "edit-buttons", remote: true  if can_edit? %>
+<div class="row">
+    <h5 class="col-6">Navigation</h5>
+    <a class='text-right col-6' data-toggle="modal" href="#newTopicModal">
+        [new topic]
+    </a>
+</div>
 <% if can_edit? %>
     <script>
         $('.sortable').railsSortable();
     </script>
 <% end %>
-<div id="new-topic"></div>
+
 <% if @topics.all.any? %>
     <div class="sortable">
         <% @topics.each do |topic| %>
@@ -24,3 +20,27 @@
     <h3>No Topics Yet</h3>
 <% end %>
 <div id="topic-errors"></div>
+
+<div class="modal" id="newTopicModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newTopicModal">New Topic</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for(:topic, {url: '/topics', remote: true}) do |f| %>
+            <%= f.text_field :title, placeholder: "Topic", class: "form-control mb-2" %>
+        <div class="row">
+                <%= f.submit "Create", class: "btn btn-primary m-2", 'aria-hidden' => 'true' %>
+            <% end %>
+            <button type="button" class="btn btn-primary m-2" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  

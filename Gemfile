@@ -44,6 +44,8 @@ gem 'cocoon'
 #MAILGUN
 gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 gem "audited", "~> 4.6"
+# Boostrap Sass Library
+gem 'bootstrap', '~> 4.1.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,26 +1,36 @@
-<div id="reminder">
-    <%= render 'reminder' %>
-</div>
-<h1 id="ref-title">Immigration Legal</h1>
-<div id="categories">
-    <%= link_to 'Immigration Legal', fetch_category_path(:option => 'Immigration Legal'), remote: true, class: 'category-links' %> - 
-    <%= link_to 'Other Legal', fetch_category_path(option: 'Other Legal'), remote: true, class: 'category-links' %> - 
-    <%= link_to 'Social Services', fetch_category_path(option: 'Social Services'), remote: true, class: 'category-links' %> - 
-    <%= link_to 'Advocacy', fetch_category_path(option: 'Advocacy'), remote: true, class: 'category-links' %>
-</div>
+<div class="container">
+    <div id="reminder">
+        <div class="row">
+            <div class='col-12 alert alert-info' role='alert'>
+                <%= render 'reminder' %>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <h1 class='col-12 text-center' id="ref-title">Immigration Legal</h1>
+    </div>
 
-<div id="referral-area">
-    <div id="referral-titles">
-        <%= render 'titles' %>
+    <div class='row border-bottom' id="categories">
+        <h3 class='text-center col-12'>
+            <%= link_to 'Immigration Legal', fetch_category_path(:option => 'Immigration Legal'), remote: true %> - 
+            <%= link_to 'Other Legal', fetch_category_path(option: 'Other Legal'), remote: true %> - 
+            <%= link_to 'Social Services', fetch_category_path(option: 'Social Services'), remote: true %> - 
+            <%= link_to 'Advocacy', fetch_category_path(option: 'Advocacy'), remote: true %>
+        </h3>
     </div>
-    <div id="referral-content">
-        <%= render 'content' %>
-    </div>
-    <div id="referral-side-buttons">
-        <%= render 'side_buttons' %>
+
+    <div class='row'id="referral-area">
+        <div class='col-2' id="referral-titles">
+            <%= render 'titles' %>
+        </div>
+        <div class='col-9' id="referral-content">
+            <%= render 'content' %>
+        </div>
+        <div class='col-1' id="referral-side-buttons">
+            <%= render partial: 'topics/hotlinks', locals: {hotlinks: Hotlink.all} %>
+        </div>
     </div>
 </div>
-
 
 
  

@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get '/error' => 'static#permission_error'
   get '/help' => 'static#help'
   get '/tracking' => 'static#tracking'
+  get '/privacypolicy' => 'static#pp'
+  get '/termsofservice' => 'static#tos'
 
   #USER PAGES
   get '/user/list' => "users#index"

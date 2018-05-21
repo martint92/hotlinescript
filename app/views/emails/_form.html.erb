@@ -1,7 +1,11 @@
 <%= form_for(@email) do |f| %>
-    <br><br>
-    <%= f.label :subject, "Subject:"%>
-    <%= f.text_field :subject %><br><br>
+    <br>
+    <div class="input-group my-4">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Subject: </span>
+        </div>
+        <%= f.text_field :subject, class: 'form-control' %>
+    </div>
     <%= f.cktext_area :content %>
-    <%= f.submit "Submit", :class => "btn-submit" %>
+    <%= f.submit "Submit", :class => "btn btn-primary my-4" %>
 <% end %>
