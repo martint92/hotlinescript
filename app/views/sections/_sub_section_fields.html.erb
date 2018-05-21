@@ -10,7 +10,7 @@
     </div>
     <% if f.object.micro_sections.any? %>
         <%= f.fields_for :micro_sections do |ms| %>
-            <%= render 'micro_sections_fields', f: ms %>
+            <%= render 'micro_section_fields', f: ms %>
         <% end %>
     <% end %>
     <div id="micro-sections">
