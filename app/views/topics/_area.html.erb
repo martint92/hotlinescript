@@ -1,3 +1,14 @@
+<script>
+    $('.expandable-box').next().hide();
+    $('.expandable-box').next().next().hide();
+    $('.expandable-box').next().next().next().hide();
+    $('.expandable-box').on('click', function() {
+        $(this).next().slideToggle();
+        $(this).next().next().slideToggle();
+        $(this).next().next().next().slideToggle();
+    });
+</script>
+
 <% if topic.try(:title).blank? %>
     <h1>There's Nothing Here!</h1>
     <p>Either you're editing the title of this page, or nothing has been posted here!</p>
@@ -30,20 +41,22 @@
                 <% if section.sub_sections %>
                     <% section.sub_sections.each do |ss| %>
                         <div class="card" id="<%= ss.css_id %>">
-                            <h4 class="card-title font-italic card-header"><%= ss.title %></h4>
-                            <p class="card-text">
-                                <%= ss.body.html_safe %>
-                            </p>
-                            <% if ss.micro_sections %>
-                                <% ss.micro_sections.each do |ms| %>
-                                    <div class="card" id="<%= ms.css_id %>">
-                                        <h4 class="card-title font-italic card-header"><%= ms.title %></h4>
-                                        <p class="card-text">
-                                            <%= ms.body.html_safe %>
-                                        </p>
-                                    </div>
+                            <h4 class="expandable-box card-title font-italic card-header"><%= ss.title %></h4>
+                            <div>
+                                <p class="card-text">
+                                    <%= ss.body.html_safe %>
+                                </p>
+                                <% if ss.micro_sections %>
+                                    <% ss.micro_sections.each do |ms| %>
+                                        <div class="card" id="<%= ms.css_id %>">
+                                            <h4 class="expandable-box card-title font-italic card-header"><%= ms.title %></h4>
+                                            <p class="card-text">
+                                                <%= ms.body.html_safe %>
+                                            </p>
+                                        </div>
+                                    <% end %>
                                 <% end %>
-                            <% end %>
+                            </div>
                         </div>
                     <% end %>
                 <% end %>
