@@ -15,7 +15,7 @@
         <% topic.sections.order(:priority).all.each do |section|%>
             <% if section.try(:sub_sections) %>
                 <li id="<%= section.sortable_id%>" class=" dropdown">
-                    <%= link_to section.title, from_nav_path(topic, anchor: section.css_id), remote: true, 'data-toggle' => 'dropdown', 'role' =>' button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false', class: "dropdown-toggle" %>
+                    <%= link_to section.title, from_nav_path(topic, anchor: section.css_id), remote: true, 'data-toggle' => 'dropdown', 'role' =>' button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' %>
                     <div class='dropdown-menu'>
                         <% section.sub_sections.all.each do |ss| %>
                             <%= link_to ss.title, from_nav_path(topic, anchor: ss.css_id), remote: true, class: 'dropdown-item' %>
