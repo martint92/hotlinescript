@@ -25,7 +25,7 @@
             <div class="container card">
                 <div class="card-header">
                     <div class="row">
-                        <h3 class="card-title col-5" id="<%= section.css_id %>"><%= section.title %></h3>
+                        <h3 class="card-title col-5" id="<%= section.css_id %>" ><%= section.title %></h3>
                         <span class="font-italic col-4"><%= show_editors(section) %></span>
                         <% if can_edit? %>
                             <div class="col-3">
@@ -41,7 +41,7 @@
                 <% if section.sub_sections %>
                     <% section.sub_sections.each do |ss| %>
                         <div class="card" id="<%= ss.css_id %>">
-                            <h4 class="expandable-box card-title font-italic card-header"><%= ss.title %></h4>
+                            <h5 class="expandable-box card-title font-italic card-header my-klass dropdown-toggle"><%= ss.title %></h5>
                             <div>
                                 <p class="card-text">
                                     <%= ss.body.html_safe %>
@@ -49,7 +49,7 @@
                                 <% if ss.micro_sections %>
                                     <% ss.micro_sections.each do |ms| %>
                                         <div class="card" id="<%= ms.css_id %>">
-                                            <h4 class="expandable-box card-title font-italic card-header"><%= ms.title %></h4>
+                                            <h6 class="expandable-box card-title font-italic card-header my-klass dropdown-toggle"><%= ms.title %></h6>
                                             <p class="card-text">
                                                 <%= ms.body.html_safe %>
                                             </p>
@@ -60,7 +60,7 @@
                         </div>
                     <% end %>
                 <% end %>
-            </div>
+            <br></div><br>
         <% end %>
     <% end %>
 <% end %>

@@ -14,7 +14,6 @@ class TopicsController < ApplicationController
 
     def from_nav
         @selected = Topic.find(params[:id])
-        @anchor = params[:section]
         respond_to(:js)
         session[:last_topic] = @selected
     end 
