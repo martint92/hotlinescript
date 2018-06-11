@@ -25,7 +25,6 @@
                 <div class="card-header">
                     <div class="row">
                         <h3 class="card-title col-5" id="<%= section.css_id %>" ><%= section.title %></h3>
-                        <span class="font-italic col-4"><%= show_editors(section) %></span>
                         <% if can_edit? %>
                             <div class="col-3">
                                 <%= link_to '[edit]', edit_section_path(section), remote: true, :class => "align-self-end" %>
