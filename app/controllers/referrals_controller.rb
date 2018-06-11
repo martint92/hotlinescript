@@ -1,5 +1,5 @@
 class ReferralsController < ApplicationController
-
+    include ReferralsHelper
     before_action :require_editor, only: [:new, :create, :edit, :update, :destroy]
     before_action :require_user 
 

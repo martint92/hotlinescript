@@ -12,10 +12,17 @@
     <%= link_to '[new]', new_referral_path, remote: true, class: 'edit-buttons' if can_edit? %>
     <div class="sortable">
         <% @referrals.each do |referral| %>
-            <p class='m-0' id="<%= referral.sortable_id %>">
-                <%= link_to referral.title, fetch_content_path(:follow_id => referral.id), remote: true %>
-                <%= link_to '[x]', referral, remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone."} if can_edit? %>
-            </p>
+                <div class='m-0 p-0' id="<%= referral.sortable_id %>">
+                    <%= link_to referral.title, fetch_content_path(:follow_id => referral.id), remote: true %>
+                    <%= link_to '[x]', referral, remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone."} if can_edit? %>
+                </div>
+            <% if referral.try(:ref_subs) %>
+                <ul>
+                    <% referral.ref_subs.each do |ref| %>
+                        <li><%= ref.title %></li>
+                    <% end %>
+                </ul>
+            <% end %>
         <% end %>
     </div>
 <% end %>
