@@ -1,1 +1,3 @@
 $('#topics-area').html("<%= j (render partial: 'area', locals: { topic: @selected } )%>");
+window.location = '#<%= params[:scrollhere] %>'
+

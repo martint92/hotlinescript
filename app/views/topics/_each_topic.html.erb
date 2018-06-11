@@ -1,6 +1,6 @@
 <div class="container" id="<%= topic.sortable_id %>">
         <% if can_edit? %>
-            <div id="<%= topic.css_id %>" class="row">
+            <div id="<%= topic.css_id %>" class="row p-0">
                 <h6 class="col-6"><%= topic.title%></h6>
                 <p class="col-6 text-right">
                     <%= link_to  '[edit]', edit_topic_path(topic), remote: true %>
@@ -11,21 +11,25 @@
             <h6 id="<%= topic.css_id %>"><%= topic.title%></h6>
         <% end %>
     <% if topic.try(:sections) %>
-    <ul class="sortable section-menu <%= topic.css_id %> nav nav-pills">
+    <ul class="sortable section-menu <%= topic.css_id %> nav flex-column">
         <% topic.sections.order(:priority).all.each do |section|%>
             <% if section.try(:sub_sections) %>
-                <li id="<%= section.sortable_id%>" class=" dropdown">
-                    <%= link_to section.title, from_nav_path(topic, anchor: section.css_id), remote: true, 'data-toggle' => 'dropdown', 'role' =>' button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' %>
-                    <div class='dropdown-menu'>
+                <li id="<%= section.sortable_id%>">
+                    <%= link_to section.title, from_nav_path(topic, scrollhere: section.css_id), remote: true %> 
+                    <a data-toggle="collapse" href="#<%=section.css_id%>-menu" aria-expanded="false" class="dropdown-toggle"> </a>
+                    <div id="<%=section.css_id%>-menu" class="collapse">
+                        <ul>
                         <% section.sub_sections.all.each do |ss| %>
-                            <%= link_to ss.title, from_nav_path(topic, anchor: ss.css_id), remote: true, class: 'dropdown-item' %>
+                            <li>
+                                <%= link_to ss.title, from_nav_path(topic, scrollhere: ss.css_id), remote: true %>
+                            </li>
                         <% end %>
+                        </ul>
                     </div>
                 </li>
             <% else %>
                 <li id="<%= section.sortable_id%>" >
-                    <%= link_to section.title, from_nav_path(topic, anchor: section.css_id), remote: true %>
-                </li>
+                    <%= link_to ss.title, from_nav_path(topic, scrollhere: section.css_id), remote: true %>
             <% end %>
         <% end %>
     </ul>
