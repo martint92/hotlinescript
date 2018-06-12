@@ -29,7 +29,7 @@
                 </li>
             <% else %>
                 <li id="<%= section.sortable_id%>" >
-                    <%= link_to ss.title, from_nav_path(topic, scrollhere: section.css_id), remote: true %>
+                    <%= link_to section.title, from_nav_path(topic, scrollhere: section.css_id), remote: true %>
             <% end %>
         <% end %>
     </ul>
