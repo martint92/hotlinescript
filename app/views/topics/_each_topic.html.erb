@@ -13,7 +13,7 @@
     <% if topic.try(:sections) %>
     <ul class="sortable section-menu <%= topic.css_id %> nav flex-column">
         <% topic.sections.order(:priority).all.each do |section|%>
-            <% if section.try(:sub_sections) %>
+            <% if section.try(:sub_sections) && section.sub_sections.first != nil %>
                 <li id="<%= section.sortable_id%>">
                     <%= link_to section.title, from_nav_path(topic, scrollhere: section.css_id), remote: true %> 
                     <a data-toggle="collapse" href="#<%=section.css_id%>-menu" aria-expanded="false" class="dropdown-toggle"> </a>
