@@ -13,13 +13,13 @@
     <div class="sortable">
         <% @referrals.each do |referral| %>
                 <div id="<%= referral.sortable_id %>">
-                    <%= link_to referral.title, fetch_content_path(:follow_id => referral.id), remote: true %>
+                    <b><%= link_to referral.title, fetch_content_path(:follow_id => referral.id), remote: true %></b>
                     <%= link_to '[x]', referral, remote: true, method: :delete, data: { confirm: "Are you sure? This cannot be undone."} if can_edit? %>
                     <% if referral.try(:ref_subs) && referral.ref_subs.first != nil %>
                         <%if session[:ref_page] == referral.id %>
                              <ul>
                                 <% referral.ref_subs.each do |ref| %>
-                                    <li><%= ref.title %></li>
+                                    <li><%= link_to ref.title, fetch_content_path(follow_id: referral.id, scrollhere: css_id(ref)), remote: true %></li>
                                 <% end %>
                             </ul>                       
                         <% else %>
